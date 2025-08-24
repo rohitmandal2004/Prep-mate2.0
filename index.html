@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepmate - Find Your Dream Job</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-briefcase"></i>
+                <span>Prepmate</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#exam-prep">Exam Prep</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Find Your Dream Job</h1>
+                <p>Discover opportunities across top platforms, prepare for exams, and build your skills</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Browse Jobs</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-users"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Openings Section -->
+    <section id="jobs" class="jobs-section">
+        <div class="container">
+            <h2>Latest Job Openings</h2>
+            <div class="platform-tabs">
+                <button class="tab-btn active" data-platform="all">All Platforms</button>
+                <button class="tab-btn" data-platform="linkedin">LinkedIn</button>
+                <button class="tab-btn" data-platform="indeed">Indeed</button>
+                <button class="tab-btn" data-platform="glassdoor">Glassdoor</button>
+                <button class="tab-btn" data-platform="monster">Monster</button>
+            </div>
+            <div class="jobs-grid">
+                <div class="job-card" data-platform="linkedin">
+                    <div class="job-header">
+                        <h3>Senior Software Engineer</h3>
+                        <span class="company">TechCorp Inc.</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$120k - $150k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge linkedin">LinkedIn</span>
+                    </div>
+                    <p class="job-description">Join our team to build scalable web applications using React, Node.js, and AWS.</p>
+                    <div class="job-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="indeed">
+                    <div class="job-header">
+                        <h3>Data Scientist</h3>
+                        <span class="company">DataFlow Analytics</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$100k - $130k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge indeed">Indeed</span>
+                    </div>
+                    <p class="job-description">Analyze large datasets and develop machine learning models for business insights.</p>
+                    <div class="job-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="glassdoor">
+                    <div class="job-header">
+                        <h3>UX/UI Designer</h3>
+                        <span class="company">Design Studio Pro</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Austin, TX</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$80k - $110k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge glassdoor">Glassdoor</span>
+                    </div>
+                    <p class="job-description">Create beautiful and intuitive user experiences for web and mobile applications.</p>
+                    <div class="job-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Adobe XD</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="monster">
+                    <div class="job-header">
+                        <h3>Product Manager</h3>
+                        <span class="company">InnovateTech</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Seattle, WA</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$110k - $140k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge monster">Monster</span>
+                    </div>
+                    <p class="job-description">Lead product strategy and development for our SaaS platform.</p>
+                    <div class="job-tags">
+                        <span class="tag">Product Strategy</span>
+                        <span class="tag">Agile</span>
+                        <span class="tag">SaaS</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="linkedin">
+                    <div class="job-header">
+                        <h3>DevOps Engineer</h3>
+                        <span class="company">Cloud Solutions</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$90k - $120k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge linkedin">LinkedIn</span>
+                    </div>
+                    <p class="job-description">Manage cloud infrastructure and implement CI/CD pipelines.</p>
+                    <div class="job-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="indeed">
+                    <div class="job-header">
+                        <h3>Marketing Specialist</h3>
+                        <span class="company">Growth Marketing Co.</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Chicago, IL</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$60k - $80k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge indeed">Indeed</span>
+                    </div>
+                    <p class="job-description">Develop and execute digital marketing campaigns across multiple channels.</p>
+                    <div class="job-tags">
+                        <span class="tag">Digital Marketing</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Social Media</span>
+                    </div>
+                    <button class="btn btn-apply">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam Prep Section -->
+    <section id="exam-prep" class="exam-prep-section">
+        <div class="container">
+            <h2>Exam Preparation Resources</h2>
+            <div class="exam-categories">
+                <div class="exam-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Professional Certifications</h3>
+                    <div class="exam-grid">
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <h4>AWS Certification</h4>
+                            <p>Cloud computing and AWS services</p>
+                            <div class="exam-levels">
+                                <span class="level">Foundation</span>
+                                <span class="level">Associate</span>
+                                <span class="level">Professional</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Microsoft Azure</h4>
+                            <p>Cloud platform and services</p>
+                            <div class="exam-levels">
+                                <span class="level">Fundamentals</span>
+                                <span class="level">Associate</span>
+                                <span class="level">Expert</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>CISSP</h4>
+                            <p>Information security and cybersecurity</p>
+                            <div class="exam-levels">
+                                <span class="level">Professional</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-category">
+                    <h3><i class="fas fa-code"></i> Programming & Development</h3>
+                    <div class="exam-grid">
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h4>Oracle Java</h4>
+                            <p>Java programming certification</p>
+                            <div class="exam-levels">
+                                <span class="level">Associate</span>
+                                <span class="level">Professional</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h4>Python Institute</h4>
+                            <p>Python programming certification</p>
+                            <div class="exam-levels">
+                                <span class="level">PCAP</span>
+                                <span class="level">PCPP</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <h4>Microsoft .NET</h4>
+                            <p>.NET development certification</p>
+                            <div class="exam-levels">
+                                <span class="level">Associate</span>
+                                <span class="level">Expert</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-category">
+                    <h3><i class="fas fa-chart-line"></i> Business & Management</h3>
+                    <div class="exam-grid">
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h4>PMP Certification</h4>
+                            <p>Project Management Professional</p>
+                            <div class="exam-levels">
+                                <span class="level">Professional</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h4>ITIL Foundation</h4>
+                            <p>IT Service Management</p>
+                            <div class="exam-levels">
+                                <span class="level">Foundation</span>
+                                <span class="level">Intermediate</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+
+                        <div class="exam-card">
+                            <div class="exam-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h4>Six Sigma</h4>
+                            <p>Process improvement methodology</p>
+                            <div class="exam-levels">
+                                <span class="level">Green Belt</span>
+                                <span class="level">Black Belt</span>
+                            </div>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>Essential Skills for Your Career</h2>
+            <div class="skills-categories">
+                <div class="skills-category">
+                    <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4>Web Development</h4>
+                            <p>HTML, CSS, JavaScript, React, Angular, Vue.js</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Mobile Development</h4>
+                            <p>iOS, Android, React Native, Flutter</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4>Cloud Computing</h4>
+                            <p>AWS, Azure, Google Cloud, Docker, Kubernetes</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Data Science & AI</h4>
+                            <p>Python, R, Machine Learning, Deep Learning</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Communication</h4>
+                            <p>Written and verbal communication skills</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Problem Solving</h4>
+                            <p>Analytical thinking and creative solutions</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h4>Teamwork</h4>
+                            <p>Collaboration and team dynamics</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Time Management</h4>
+                            <p>Prioritization and deadline management</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Have questions about job opportunities or career development? We're here to help!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@prepmate.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Career Street, Job City, JC 12345</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Prepmate</h4>
+                    <p>Your gateway to career opportunities, exam preparation, and skill development.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#jobs">Job Openings</a></li>
+                        <li><a href="#exam-prep">Exam Prep</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Career Guide</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Interview Tips</a></li>
+                        <li><a href="#">Salary Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with the latest job opportunities and career tips.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prepmate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
