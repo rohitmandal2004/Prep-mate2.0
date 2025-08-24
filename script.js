@@ -535,12 +535,723 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+    
+    // Initialize My Skills section
+    initializeMySkills();
+    
+    // Add event listener for skill form
+    const addSkillForm = document.getElementById('addSkillForm');
+    if (addSkillForm) {
+        addSkillForm.addEventListener('submit', addSkill);
+    }
 });
 
 // Add loading animation for images and icons
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
+
+// Authentication Functions
+function showLoginModal() {
+    document.getElementById('loginModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function showSignupModal() {
+    document.getElementById('signupModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAuthModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function switchToSignup() {
+    closeAuthModal('loginModal');
+    setTimeout(() => showSignupModal(), 300);
+}
+
+function switchToLogin() {
+    closeAuthModal('signupModal');
+    setTimeout(() => showLoginModal(), 300);
+}
+
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const toggle = input.parentElement.querySelector('.password-toggle i');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        toggle.className = 'fas fa-eye-slash';
+    } else {
+        input.type = 'password';
+        toggle.className = 'fas fa-eye';
+    }
+}
+
+// Password strength checker
+function checkPasswordStrength(password) {
+    let strength = 0;
+    let feedback = [];
+    
+    if (password.length >= 8) strength++;
+    else feedback.push('At least 8 characters');
+    
+    if (/[a-z]/.test(password)) strength++;
+    else feedback.push('Include lowercase letters');
+    
+    if (/[A-Z]/.test(password)) strength++;
+    else feedback.push('Include uppercase letters');
+    
+    if (/[0-9]/.test(password)) strength++;
+    else feedback.push('Include numbers');
+    
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    else feedback.push('Include special characters');
+    
+    return { strength, feedback };
+}
+
+function updatePasswordStrength() {
+    const password = document.getElementById('signupPassword').value;
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthText = document.getElementById('strengthText');
+    
+    if (password.length === 0) {
+        strengthFill.className = 'strength-fill';
+        strengthText.textContent = 'Password strength';
+        return;
+    }
+    
+    const { strength, feedback } = checkPasswordStrength(password);
+    
+    strengthFill.className = 'strength-fill';
+    if (strength <= 1) {
+        strengthFill.classList.add('weak');
+        strengthText.textContent = 'Weak';
+    } else if (strength <= 2) {
+        strengthFill.classList.add('fair');
+        strengthText.textContent = 'Fair';
+    } else if (strength <= 3) {
+        strengthFill.classList.add('good');
+        strengthText.textContent = 'Good';
+    } else {
+        strengthFill.classList.add('strong');
+        strengthText.textContent = 'Strong';
+    }
+}
+
+// Form validation
+function validateSignupForm() {
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+    const agreeTerms = document.getElementById('agreeTerms').checked;
+    
+    if (password !== confirmPassword) {
+        showNotification('Passwords do not match', 'error');
+        return false;
+    }
+    
+    if (!agreeTerms) {
+        showNotification('Please agree to the Terms of Service', 'error');
+        return false;
+    }
+    
+    const { strength } = checkPasswordStrength(password);
+    if (strength < 3) {
+        showNotification('Please choose a stronger password', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+// Login form handler
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const rememberMe = document.getElementById('rememberMe').checked;
+    
+    // Simulate login process
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.textContent = 'Logging in...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Simulate successful login
+        showNotification('Successfully logged in!', 'success');
+        closeAuthModal('loginModal');
+        
+        // Update UI to show logged-in state
+        updateAuthUI(true);
+        
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 2000);
+});
+
+// Signup form handler
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (!validateSignupForm()) {
+        return;
+    }
+    
+    const firstName = document.getElementById('signupFirstName').value;
+    const lastName = document.getElementById('signupLastName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const newsletterSignup = document.getElementById('newsletterSignup').checked;
+    
+    // Simulate signup process
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.textContent = 'Creating account...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Simulate successful signup
+        showNotification('Account created successfully!', 'success');
+        closeAuthModal('signupModal');
+        
+        // Update UI to show logged-in state
+        updateAuthUI(true);
+        
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 2000);
+});
+
+// Update authentication UI
+function updateAuthUI(isLoggedIn) {
+    const authButtons = document.querySelector('.auth-buttons');
+    
+    if (isLoggedIn) {
+        authButtons.innerHTML = `
+            <div class="user-menu">
+                <button class="btn btn-outline btn-sm" onclick="showUserMenu()">
+                    <i class="fas fa-user"></i>
+                    <span>John Doe</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#"><i class="fas fa-user-circle"></i> Profile</a>
+                    <a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        `;
+    } else {
+        authButtons.innerHTML = `
+            <button class="btn btn-outline btn-sm" onclick="showLoginModal()">Login</button>
+            <button class="btn btn-primary btn-sm" onclick="showSignupModal()">Sign Up</button>
+        `;
+    }
+}
+
+function showUserMenu() {
+    const dropdown = document.getElementById('userDropdown');
+    dropdown.classList.toggle('active');
+}
+
+function logout() {
+    updateAuthUI(false);
+    showNotification('Successfully logged out', 'success');
+}
+
+// Social authentication handlers
+document.querySelectorAll('.btn-social').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const provider = this.classList.contains('btn-google') ? 'Google' : 'LinkedIn';
+        showNotification(`Connecting with ${provider}...`, 'info');
+        
+        // Simulate social login
+        setTimeout(() => {
+            showNotification(`Successfully connected with ${provider}!`, 'success');
+            closeAuthModal('loginModal');
+            closeAuthModal('signupModal');
+            updateAuthUI(true);
+        }, 2000);
+    });
+});
+
+// Password strength monitoring
+document.getElementById('signupPassword').addEventListener('input', updatePasswordStrength);
+
+// Close auth modals when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('auth-modal')) {
+        closeAuthModal(e.target.id);
+    }
+});
+
+// Close auth modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.auth-modal.active').forEach(modal => {
+            closeAuthModal(modal.id);
+        });
+    }
+});
+
+// Add user menu styles
+const userMenuStyles = `
+    <style>
+        .user-menu {
+            position: relative;
+        }
+        
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .user-dropdown.active {
+            display: block;
+        }
+        
+        .user-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .user-dropdown a:hover {
+            background: #f3f4f6;
+        }
+        
+        .dropdown-divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 0.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .user-dropdown {
+                right: -50px;
+            }
+        }
+    </style>
+`;
+
+document.head.insertAdjacentHTML('beforeend', userMenuStyles);
+
+// My Skills Management
+let mySkills = JSON.parse(localStorage.getItem('mySkills')) || [];
+
+// Initialize My Skills section
+function initializeMySkills() {
+    renderMySkills();
+    setupSkillFilters();
+}
+
+// Toggle certification fields visibility
+function toggleCertificationFields() {
+    const itemType = document.getElementById('itemType').value;
+    const certificationFields = document.getElementById('certificationFields');
+    
+    if (itemType === 'certification') {
+        certificationFields.style.display = 'block';
+        certificationFields.classList.add('show');
+    } else {
+        certificationFields.style.display = 'none';
+        certificationFields.classList.remove('show');
+    }
+}
+
+// Add new skill or certification
+function addSkill(event) {
+    event.preventDefault();
+    
+    const itemType = document.getElementById('itemType').value;
+    const skillName = document.getElementById('skillName').value.trim();
+    const skillCategory = document.getElementById('skillCategory').value;
+    const skillDescription = document.getElementById('skillDescription').value.trim();
+    const skillLevel = document.getElementById('skillLevel').value;
+    const skillIcon = document.getElementById('skillIcon').value;
+    const skillUrl = document.getElementById('skillUrl').value.trim();
+    
+    if (!skillName || !skillCategory || !skillLevel) {
+        showNotification('Please fill in all required fields', 'error');
+        return;
+    }
+    
+    const newItem = {
+        id: Date.now(),
+        type: itemType,
+        name: skillName,
+        category: skillCategory,
+        description: skillDescription,
+        level: parseInt(skillLevel),
+        icon: skillIcon,
+        url: skillUrl,
+        dateAdded: new Date().toISOString()
+    };
+    
+    // Add certification-specific fields if it's a certification
+    if (itemType === 'certification') {
+        const certIssuer = document.getElementById('certIssuer').value.trim();
+        const certLevel = document.getElementById('certLevel').value;
+        const certDate = document.getElementById('certDate').value;
+        const certExpiry = document.getElementById('certExpiry').value;
+        const certId = document.getElementById('certId').value.trim();
+        
+        if (!certIssuer || !certLevel || !certDate) {
+            showNotification('Please fill in all certification fields', 'error');
+            return;
+        }
+        
+        newItem.certification = {
+            issuer: certIssuer,
+            level: certLevel,
+            dateObtained: certDate,
+            expiryDate: certExpiry,
+            id: certId
+        };
+    }
+    
+    mySkills.push(newItem);
+    saveSkills();
+    renderMySkills();
+    
+    // Reset form
+    event.target.reset();
+    document.getElementById('certificationFields').style.display = 'none';
+    showNotification(`${itemType === 'certification' ? 'Certification' : 'Skill'} added successfully!`, 'success');
+}
+
+// Render skills grid
+function renderMySkills(filterCategory = 'all', filterType = null) {
+    const skillsGrid = document.getElementById('mySkillsGrid');
+    
+    if (mySkills.length === 0) {
+        skillsGrid.innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-plus-circle"></i>
+                <h4>No Skills or Certifications Added Yet</h4>
+                <p>Start building your professional profile by adding your first skill or certification above.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    let filteredItems = mySkills;
+    
+    // Filter by type if specified
+    if (filterType) {
+        filteredItems = filteredItems.filter(item => item.type === filterType);
+    }
+    // Filter by category if specified
+    else if (filterCategory !== 'all') {
+        filteredItems = filteredItems.filter(item => item.category === filterCategory);
+    }
+    
+    if (filteredItems.length === 0) {
+        skillsGrid.innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-filter"></i>
+                <h4>No Items in This Category</h4>
+                <p>Try selecting a different category or add new skills/certifications.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    skillsGrid.innerHTML = filteredItems.map(item => {
+        const isCertification = item.type === 'certification';
+        const expiryWarning = isCertification && item.certification.expiryDate ? 
+            (new Date(item.certification.expiryDate) < new Date() ? 
+                '<div class="expiry-warning"><i class="fas fa-exclamation-triangle"></i> Expired</div>' : 
+                (new Date(item.certification.expiryDate) < new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) ? 
+                    '<div class="expiry-warning"><i class="fas fa-clock"></i> Expires Soon</div>' : '')
+            ) : '';
+        
+        return `
+            <div class="my-skill-card" data-category="${item.category}" data-type="${item.type}">
+                ${isCertification ? '<div class="certification-badge">Certification</div>' : ''}
+                <div class="my-skill-header">
+                    <div class="my-skill-info">
+                        <div class="my-skill-icon">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <div class="my-skill-details">
+                            <h4>${item.name}</h4>
+                            <span class="my-skill-category">${item.category.replace('-', ' ')}</span>
+                        </div>
+                    </div>
+                    <div class="my-skill-actions">
+                        <button class="edit-btn" onclick="editSkill(${item.id})" title="Edit ${isCertification ? 'Certification' : 'Skill'}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="delete-btn" onclick="deleteSkill(${item.id})" title="Delete ${isCertification ? 'Certification' : 'Skill'}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                ${item.description ? `<p class="my-skill-description">${item.description}</p>` : ''}
+                
+                ${isCertification && item.certification ? `
+                    <div class="certification-details">
+                        <h5><i class="fas fa-certificate"></i> Certification Details</h5>
+                        <div class="certification-info">
+                            <div>
+                                <label>Issuer:</label>
+                                <span>${item.certification.issuer}</span>
+                            </div>
+                            <div>
+                                <label>Level:</label>
+                                <span>${item.certification.level}</span>
+                            </div>
+                            <div>
+                                <label>Date Obtained:</label>
+                                <span>${new Date(item.certification.dateObtained).toLocaleDateString()}</span>
+                            </div>
+                            ${item.certification.expiryDate ? `
+                                <div>
+                                    <label>Expiry Date:</label>
+                                    <span>${new Date(item.certification.expiryDate).toLocaleDateString()}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        ${item.certification.id ? `<div class="certification-id">ID: ${item.certification.id}</div>` : ''}
+                        ${expiryWarning}
+                    </div>
+                ` : ''}
+                
+                <div class="my-skill-level">
+                    <span class="level-label">Proficiency Level</span>
+                    <div class="level-bars">
+                        ${Array.from({length: 5}, (_, i) => 
+                            `<div class="bar ${i < item.level ? 'active' : ''}"></div>`
+                        ).join('')}
+                    </div>
+                </div>
+                
+                ${item.url ? `
+                    <div class="skill-url">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                            ${isCertification ? 'View Certificate' : 'View Details'}
+                        </a>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
+}
+
+// Setup skill filters
+function setupSkillFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const category = btn.dataset.category;
+            const type = btn.dataset.type;
+            
+            if (type) {
+                renderMySkills('all', type);
+            } else {
+                renderMySkills(category);
+            }
+        });
+    });
+}
+
+// Edit skill or certification
+function editSkill(skillId) {
+    const item = mySkills.find(s => s.id === skillId);
+    if (!item) return;
+    
+    // Populate form with item data
+    document.getElementById('itemType').value = item.type;
+    document.getElementById('skillName').value = item.name;
+    document.getElementById('skillCategory').value = item.category;
+    document.getElementById('skillDescription').value = item.description;
+    document.getElementById('skillLevel').value = item.level;
+    document.getElementById('skillIcon').value = item.icon;
+    document.getElementById('skillUrl').value = item.url || '';
+    
+    // Toggle certification fields if needed
+    toggleCertificationFields();
+    
+    // Populate certification fields if it's a certification
+    if (item.type === 'certification' && item.certification) {
+        document.getElementById('certIssuer').value = item.certification.issuer || '';
+        document.getElementById('certLevel').value = item.certification.level || '';
+        document.getElementById('certDate').value = item.certification.dateObtained || '';
+        document.getElementById('certExpiry').value = item.certification.expiryDate || '';
+        document.getElementById('certId').value = item.certification.id || '';
+    }
+    
+    // Update form to edit mode
+    const form = document.getElementById('addSkillForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    submitBtn.innerHTML = `<i class="fas fa-save"></i> Update ${item.type === 'certification' ? 'Certification' : 'Skill'}`;
+    submitBtn.onclick = (e) => updateSkill(e, skillId);
+    
+    // Scroll to form
+    document.querySelector('.skills-management').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Update skill or certification
+function updateSkill(event, skillId) {
+    event.preventDefault();
+    
+    const skillIndex = mySkills.findIndex(s => s.id === skillId);
+    if (skillIndex === -1) return;
+    
+    const itemType = document.getElementById('itemType').value;
+    const skillName = document.getElementById('skillName').value.trim();
+    const skillCategory = document.getElementById('skillCategory').value;
+    const skillDescription = document.getElementById('skillDescription').value.trim();
+    const skillLevel = document.getElementById('skillLevel').value;
+    const skillIcon = document.getElementById('skillIcon').value;
+    const skillUrl = document.getElementById('skillUrl').value.trim();
+    
+    if (!skillName || !skillCategory || !skillLevel) {
+        showNotification('Please fill in all required fields', 'error');
+        return;
+    }
+    
+    const updatedItem = {
+        ...mySkills[skillIndex],
+        type: itemType,
+        name: skillName,
+        category: skillCategory,
+        description: skillDescription,
+        level: parseInt(skillLevel),
+        icon: skillIcon,
+        url: skillUrl,
+        dateUpdated: new Date().toISOString()
+    };
+    
+    // Update certification-specific fields if it's a certification
+    if (itemType === 'certification') {
+        const certIssuer = document.getElementById('certIssuer').value.trim();
+        const certLevel = document.getElementById('certLevel').value;
+        const certDate = document.getElementById('certDate').value;
+        const certExpiry = document.getElementById('certExpiry').value;
+        const certId = document.getElementById('certId').value.trim();
+        
+        if (!certIssuer || !certLevel || !certDate) {
+            showNotification('Please fill in all certification fields', 'error');
+            return;
+        }
+        
+        updatedItem.certification = {
+            issuer: certIssuer,
+            level: certLevel,
+            dateObtained: certDate,
+            expiryDate: certExpiry,
+            id: certId
+        };
+    } else {
+        // Remove certification data if switching from certification to skill
+        delete updatedItem.certification;
+    }
+    
+    mySkills[skillIndex] = updatedItem;
+    saveSkills();
+    renderMySkills();
+    
+    // Reset form to add mode
+    resetSkillForm();
+    showNotification(`${itemType === 'certification' ? 'Certification' : 'Skill'} updated successfully!`, 'success');
+}
+
+// Delete skill
+function deleteSkill(skillId) {
+    if (confirm('Are you sure you want to delete this skill?')) {
+        mySkills = mySkills.filter(s => s.id !== skillId);
+        saveSkills();
+        renderMySkills();
+        showNotification('Skill deleted successfully!', 'success');
+    }
+}
+
+// Clear all skills
+function clearAllSkills() {
+    if (confirm('Are you sure you want to delete all skills? This action cannot be undone.')) {
+        mySkills = [];
+        saveSkills();
+        renderMySkills();
+        showNotification('All skills cleared!', 'success');
+    }
+}
+
+// Export skills and certifications
+function exportSkills() {
+    if (mySkills.length === 0) {
+        showNotification('No skills or certifications to export', 'error');
+        return;
+    }
+    
+    const skillsCount = mySkills.filter(item => item.type === 'skill').length;
+    const certificationsCount = mySkills.filter(item => item.type === 'certification').length;
+    
+    const skillsData = {
+        exportDate: new Date().toISOString(),
+        totalItems: mySkills.length,
+        skillsCount: skillsCount,
+        certificationsCount: certificationsCount,
+        items: mySkills
+    };
+    
+    const dataStr = JSON.stringify(skillsData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = `my-skills-certifications-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    
+    showNotification(`Exported ${skillsCount} skills and ${certificationsCount} certifications successfully!`, 'success');
+}
+
+// Save skills to localStorage
+function saveSkills() {
+    localStorage.setItem('mySkills', JSON.stringify(mySkills));
+}
+
+// Reset skill form to add mode
+function resetSkillForm() {
+    const form = document.getElementById('addSkillForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    form.reset();
+    document.getElementById('certificationFields').style.display = 'none';
+    submitBtn.innerHTML = '<i class="fas fa-plus"></i> Add Item';
+    submitBtn.onclick = addSkill;
+}
 
 // Add loaded class styles
 const loadedStyles = `

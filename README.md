@@ -167,7 +167,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 For support or questions, please contact:
 - Email: info@prepmate.com
-- Phone: +1 (555) 123-4567
+- Phone: +91-9378093270
 
 ## 🔄 Updates
 

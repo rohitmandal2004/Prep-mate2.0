@@ -21,7 +21,12 @@
                 <li><a href="#jobs">Jobs</a></li>
                 <li><a href="#exam-prep">Exam Prep</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#my-skills">My Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="auth-buttons">
+                    <button class="btn btn-outline btn-sm" onclick="showLoginModal()">Login</button>
+                    <button class="btn btn-primary btn-sm" onclick="showSignupModal()">Sign Up</button>
+                </li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -43,7 +48,23 @@
                 </div>
             </div>
             <div class="hero-image">
-                <i class="fas fa-users"></i>
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional team collaborating in modern office" class="hero-photo">
+                <div class="hero-image-overlay">
+                    <div class="floating-elements">
+                        <div class="floating-card">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Job Search</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Career Growth</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-users"></i>
+                            <span>Networking</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -485,6 +506,175 @@
         </div>
     </section>
 
+    <!-- My Skills Section -->
+    <section id="my-skills" class="my-skills-section">
+        <div class="container">
+            <h2>My Skills Profile</h2>
+            <p class="section-subtitle">Manage and showcase your personal skill set</p>
+            
+            <div class="my-skills-container">
+                <div class="skills-management">
+                    <div class="add-skill-form">
+                        <h3><i class="fas fa-plus-circle"></i> Add New Skill or Certification</h3>
+                        <form id="addSkillForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="itemType">Type</label>
+                                    <select id="itemType" required onchange="toggleCertificationFields()">
+                                        <option value="skill">Skill</option>
+                                        <option value="certification">Certification</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillName">Name</label>
+                                    <input type="text" id="skillName" placeholder="e.g., Python, AWS Solutions Architect" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="skillCategory">Category</label>
+                                    <select id="skillCategory" required>
+                                        <option value="">Select Category</option>
+                                        <option value="programming">Programming Languages</option>
+                                        <option value="web-dev">Web Development</option>
+                                        <option value="database">Database & DBMS</option>
+                                        <option value="tools">Tools & Version Control</option>
+                                        <option value="frameworks">Frameworks & Libraries</option>
+                                        <option value="cloud">Cloud & DevOps</option>
+                                        <option value="security">Security & Compliance</option>
+                                        <option value="project-management">Project Management</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillLevel">Proficiency Level</label>
+                                    <select id="skillLevel" required>
+                                        <option value="">Select Level</option>
+                                        <option value="1">Beginner (1/5)</option>
+                                        <option value="2">Elementary (2/5)</option>
+                                        <option value="3">Intermediate (3/5)</option>
+                                        <option value="4">Advanced (4/5)</option>
+                                        <option value="5">Expert (5/5)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Certification-specific fields -->
+                            <div id="certificationFields" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="certIssuer">Issuing Organization</label>
+                                        <input type="text" id="certIssuer" placeholder="e.g., Amazon Web Services, Microsoft">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="certLevel">Certification Level</label>
+                                        <select id="certLevel">
+                                            <option value="">Select Level</option>
+                                            <option value="foundation">Foundation</option>
+                                            <option value="associate">Associate</option>
+                                            <option value="professional">Professional</option>
+                                            <option value="expert">Expert</option>
+                                            <option value="specialist">Specialist</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="certDate">Date Obtained</label>
+                                        <input type="date" id="certDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="certExpiry">Expiry Date</label>
+                                        <input type="date" id="certExpiry">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="certId">Certification ID</label>
+                                    <input type="text" id="certId" placeholder="e.g., AWS-123456789">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skillDescription">Description</label>
+                                <textarea id="skillDescription" placeholder="Brief description of your experience or certification details" rows="3"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="skillIcon">Icon</label>
+                                    <select id="skillIcon">
+                                        <option value="fas fa-code">Code</option>
+                                        <option value="fab fa-python">Python</option>
+                                        <option value="fab fa-js-square">JavaScript</option>
+                                        <option value="fab fa-java">Java</option>
+                                        <option value="fab fa-react">React</option>
+                                        <option value="fab fa-node-js">Node.js</option>
+                                        <option value="fas fa-database">Database</option>
+                                        <option value="fab fa-git-alt">Git</option>
+                                        <option value="fab fa-github">GitHub</option>
+                                        <option value="fab fa-html5">HTML5</option>
+                                        <option value="fab fa-css3-alt">CSS3</option>
+                                        <option value="fab fa-aws">AWS</option>
+                                        <option value="fab fa-docker">Docker</option>
+                                        <option value="fas fa-cloud">Cloud</option>
+                                        <option value="fas fa-server">Server</option>
+                                        <option value="fas fa-certificate">Certificate</option>
+                                        <option value="fas fa-shield-alt">Security</option>
+                                        <option value="fas fa-project-diagram">Project Management</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillUrl">URL (Optional)</label>
+                                    <input type="url" id="skillUrl" placeholder="Link to certificate or portfolio">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-plus"></i> Add Item
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="my-skills-display">
+                    <div class="skills-header">
+                        <h3><i class="fas fa-user-check"></i> My Skills & Certifications</h3>
+                        <div class="skills-actions">
+                            <button class="btn btn-outline btn-sm" onclick="exportSkills()">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                            <button class="btn btn-outline btn-sm" onclick="clearAllSkills()">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-filters">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-type="skill">Skills Only</button>
+                        <button class="filter-btn" data-type="certification">Certifications Only</button>
+                        <button class="filter-btn" data-category="programming">Programming</button>
+                        <button class="filter-btn" data-category="web-dev">Web Dev</button>
+                        <button class="filter-btn" data-category="database">Database</button>
+                        <button class="filter-btn" data-category="tools">Tools</button>
+                        <button class="filter-btn" data-category="frameworks">Frameworks</button>
+                        <button class="filter-btn" data-category="cloud">Cloud</button>
+                        <button class="filter-btn" data-category="security">Security</button>
+                        <button class="filter-btn" data-category="project-management">Project Mgmt</button>
+                        <button class="filter-btn" data-category="other">Other</button>
+                    </div>
+
+                    <div id="mySkillsGrid" class="my-skills-grid">
+                        <!-- Skills will be dynamically added here -->
+                        <div class="empty-state">
+                            <i class="fas fa-plus-circle"></i>
+                            <h4>No Skills or Certifications Added Yet</h4>
+                            <p>Start building your professional profile by adding your first skill or certification above.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -500,7 +690,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (555) 123-4567</span>
+                            <span>+91-9378093270</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -573,6 +763,139 @@
             </div>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div class="auth-modal" id="loginModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3>Welcome Back</h3>
+                <button class="auth-modal-close" onclick="closeAuthModal('loginModal')">&times;</button>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        Continue with LinkedIn
+                    </button>
+                </div>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="switchToSignup()">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="auth-modal" id="signupModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3>Create Account</h3>
+                <button class="auth-modal-close" onclick="closeAuthModal('signupModal')">&times;</button>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupFirstName">First Name</label>
+                            <input type="text" id="signupFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupLastName">Last Name</label>
+                            <input type="text" id="signupLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signupPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Password strength</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signupConfirmPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletterSignup">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for career tips and updates
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        Continue with LinkedIn
+                    </button>
+                </div>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
