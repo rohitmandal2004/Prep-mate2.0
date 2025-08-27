@@ -204,6 +204,43 @@
         </div>
     </section>
 
+    <!-- Jobs in India Subsection -->
+    <section id="jobs-in-india" class="jobs-india-section">
+        <div class="container">
+            <h3>Jobs in India</h3>
+            <div class="filters">
+                <label for="locationFilter">Location:</label>
+                <select id="locationFilter">
+                    <option value="">All</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+
+                <label for="jobTypeFilter">Job Type:</label>
+                <select id="jobTypeFilter">
+                    <option value="">All</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Contract">Contract</option>
+                </select>
+
+                <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+            </div>
+
+            <div id="jobsIndiaGrid" class="jobs-grid">
+                <!-- Dynamic job cards will be added here -->
+                <div class="empty-state">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>No job openings available</h4>
+                    <p>Use the filters above to refine your search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Exam Prep Section -->
     <section id="exam-prep" class="exam-prep-section">
         <div class="container">
@@ -686,7 +723,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>info@prepmate.com</span>
+                            <span>codecatalyst2025@gmail.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
@@ -694,7 +731,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Career Street, Job City, JC 12345</span>
+                            <span>Kolkata, North 24 Parganas</span>
                         </div>
                     </div>
                 </div>

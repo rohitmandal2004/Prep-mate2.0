@@ -166,7 +166,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Support
 
 For support or questions, please contact:
-- Email: info@prepmate.com
+- Email: codecatalyst2025@gmail.com
 - Phone: +91-9378093270
 
 ## 🔄 Updates
