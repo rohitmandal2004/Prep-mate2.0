@@ -1,184 +1,284 @@
-# Prepmate - Job Search & Career Development Website
+# 🚀 Prepmate - Job Portal & Skills Management Platform
 
-A modern, responsive website that showcases job openings from different platforms, exam preparation resources, and essential skills for career development.
+A comprehensive MERN stack application that combines job searching, skills management, and exam preparation in one platform.
 
-## 🌟 Features
+## ✨ Features
 
-### 📋 Job Openings Section
-- **Multi-Platform Integration**: Jobs from LinkedIn, Indeed, Glassdoor, and Monster
-- **Filtering System**: Filter jobs by platform using interactive tabs
-- **Detailed Job Cards**: Each job includes:
-  - Job title and company name
-  - Location and salary information
-  - Job type (Full-time, Part-time, etc.)
-  - Required skills and technologies
-  - Platform source badge
-- **Apply Functionality**: Interactive application modal with form submission
+### 🎯 **Job Portal**
+- Browse and search job openings from multiple platforms
+- Advanced filtering by location, experience, salary, and more
+- Job application tracking system
+- Employer dashboard for posting and managing jobs
 
-### 📚 Exam Preparation Section
-- **Professional Certifications**:
-  - AWS Certification (Foundation, Associate, Professional)
-  - Microsoft Azure (Fundamentals, Associate, Expert)
-  - CISSP (Information Security)
-- **Programming & Development**:
-  - Oracle Java (Associate, Professional)
-  - Python Institute (PCAP, PCPP)
-  - Microsoft .NET (Associate, Expert)
-- **Business & Management**:
-  - PMP Certification (Project Management)
-  - ITIL Foundation (IT Service Management)
-  - Six Sigma (Green Belt, Black Belt)
+### 💼 **Skills Management**
+- **Personal Skills Portfolio**: Add, edit, and organize your skills
+- **Certification Management**: Upload and track professional certifications
+- **PDF Upload Support**: Store certification documents securely
+- **Skill Endorsements**: Get recognized by peers and colleagues
+- **Category Organization**: Organize skills by technology, domain, or expertise level
 
-### 💼 Skills Section
-- **Technical Skills**:
-  - Web Development (HTML, CSS, JavaScript, React, Angular, Vue.js)
-  - Mobile Development (iOS, Android, React Native, Flutter)
-  - Cloud Computing (AWS, Azure, Google Cloud, Docker, Kubernetes)
-  - Data Science & AI (Python, R, Machine Learning, Deep Learning)
-- **Soft Skills**:
-  - Communication
-  - Problem Solving
-  - Teamwork
-  - Time Management
-- **Demand Level Indicators**: Visual bars showing skill demand in the market
+### 📚 **Exam Preparation**
+- Comprehensive exam database with study materials
+- Practice tests and study guides
+- User reviews and ratings
+- Difficulty-based filtering and recommendations
 
-### 🎨 Design Features
-- **Modern UI/UX**: Clean, professional design with gradient backgrounds
-- **Responsive Design**: Fully responsive across all devices
-- **Interactive Elements**: Hover effects, animations, and smooth transitions
-- **Accessibility**: Proper contrast ratios and keyboard navigation
-- **Loading Animations**: Smooth page load and element animations
+### 👤 **User Profiles**
+- Professional profile management
+- Privacy controls and settings
+- Connection system for networking
+- Profile completion tracking
 
-### 🔧 Interactive Features
-- **Mobile Navigation**: Hamburger menu for mobile devices
-- **Smooth Scrolling**: Navigation links with smooth scroll behavior
-- **Job Application Modal**: Complete application form with file upload
-- **Contact Form**: Functional contact form with validation
-- **Newsletter Subscription**: Email subscription with validation
-- **Notification System**: Success/error notifications
-- **Scroll to Top**: Floating button for easy navigation
+## 🛠️ Tech Stack
 
-## 🚀 Getting Started
+### **Frontend**
+- **HTML5, CSS3, JavaScript** - Core web technologies
+- **Responsive Design** - Mobile-first approach
+- **Modern UI/UX** - Clean, professional interface
+- **Faded Blues Color Palette** - Consistent visual theme
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No additional software installation required
+### **Backend**
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - Object Data Modeling
+- **JWT** - Authentication and authorization
+- **Multer** - File upload handling
+- **Express-validator** - Input validation
 
-### Installation
-1. Clone or download the project files
-2. Open `index.html` in your web browser
-3. The website will load with all features ready to use
+### **Architecture**
+- **RESTful API** - Clean, scalable API design
+- **MVC Pattern** - Organized code structure
+- **Middleware Architecture** - Modular request processing
+- **Role-Based Access Control** - Secure user permissions
 
-### File Structure
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Node.js (v16 or higher)
+- MongoDB (local or cloud instance)
+- npm or yarn package manager
+
+### **1. Clone the Repository**
+```bash
+git clone <repository-url>
+cd prepmate
 ```
-job/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styles and responsive design
-├── script.js           # JavaScript functionality
-└── README.md           # Project documentation
+
+### **2. Backend Setup**
+```bash
+cd backend
+
+# Install dependencies
+npm install
+
+# Copy environment file
+cp env.example .env
+
+# Edit environment variables
+# Update MONGODB_URI and JWT_SECRET
+
+# Start development server
+npm run dev
 ```
+
+### **3. Frontend Setup**
+```bash
+cd frontend
+
+# Open index.html in your browser
+# Or serve with a local server
+python -m http.server 8000
+```
+
+### **4. Database Setup**
+```bash
+# Start MongoDB (if local)
+mongod
+
+# Or use MongoDB Atlas (cloud)
+# Update MONGODB_URI in .env
+```
+
+## 📁 Project Structure
+
+```
+prepmate/
+├── backend/                 # Backend API server
+│   ├── models/             # Database models
+│   ├── routes/             # API route handlers
+│   ├── middleware/         # Custom middleware
+│   ├── uploads/            # File storage
+│   ├── server.js           # Main server file
+│   └── package.json        # Backend dependencies
+├── frontend/               # Frontend application
+│   ├── index.html          # Main HTML file
+│   ├── styles.css          # CSS styles
+│   ├── script.js           # JavaScript functionality
+│   └── README.md           # Frontend documentation
+└── README.md               # This file
+```
+
+## 🔐 API Endpoints
+
+### **Authentication**
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Get current user profile
+
+### **Skills & Certifications**
+- `GET /api/skills` - Get user's skills
+- `POST /api/skills` - Create new skill/certification
+- `PUT /api/skills/:id` - Update skill/certification
+- `DELETE /api/skills/:id` - Delete skill/certification
+
+### **Jobs**
+- `GET /api/jobs` - Browse job openings
+- `POST /api/jobs` - Post new job (employers)
+- `POST /api/jobs/:id/apply` - Apply for a job
+
+### **Exams**
+- `GET /api/exams` - Browse exam resources
+- `GET /api/exams/:id` - Get exam details
+- `POST /api/exams/:id/reviews` - Add exam review
+
+## 🎨 Design Features
+
+### **Color Palette**
+- **Primary**: #edf2fa (Light Blue)
+- **Secondary**: #d7e3fc (Soft Blue)
+- **Accent**: #ccdbfd (Medium Blue)
+- **Highlight**: #c1d3fe (Bright Blue)
+- **Deep**: #abc4ff (Rich Blue)
+
+### **UI Components**
+- **Modern Cards**: Clean, shadow-based design
+- **Responsive Grid**: Mobile-first layout system
+- **Smooth Animations**: CSS transitions and hover effects
+- **Interactive Elements**: Dynamic forms and modals
 
 ## 📱 Responsive Design
 
-The website is fully responsive and optimized for:
-- **Desktop**: 1200px+ (Full layout with side-by-side sections)
-- **Tablet**: 768px - 1199px (Adjusted grid layouts)
-- **Mobile**: < 768px (Single column layout with mobile navigation)
+- **Desktop**: Full-featured interface
+- **Tablet**: Optimized for medium screens
+- **Mobile**: Touch-friendly mobile experience
 
-## 🎯 Key Sections
+## 🔒 Security Features
 
-### 1. Hero Section
-- Eye-catching gradient background
-- Clear value proposition
-- Call-to-action buttons
+- **JWT Authentication**: Secure token-based auth
+- **Password Hashing**: Bcrypt encryption
+- **Input Validation**: Server-side validation
+- **File Upload Security**: Type and size restrictions
+- **CORS Protection**: Cross-origin request handling
 
-### 2. Job Openings
-- Platform filtering tabs
-- Job cards with comprehensive information
-- Apply functionality with modal form
+## 🧪 Testing
 
-### 3. Exam Preparation
-- Categorized certification programs
-- Visual icons for each certification
-- Level indicators for different expertise levels
-
-### 4. Skills Development
-- Technical and soft skills categories
-- Demand level visualization
-- Interactive skill cards
-
-### 5. Contact Section
-- Contact information display
-- Functional contact form
-- Newsletter subscription
-
-## 🔧 Customization
-
-### Adding New Jobs
-To add new job listings, add a new `.job-card` element in the jobs section:
-
-```html
-<div class="job-card" data-platform="linkedin">
-    <div class="job-header">
-        <h3>Job Title</h3>
-        <span class="company">Company Name</span>
-        <span class="location"><i class="fas fa-map-marker-alt"></i> Location</span>
-    </div>
-    <div class="job-details">
-        <span class="salary">$Salary Range</span>
-        <span class="type">Job Type</span>
-        <span class="platform-badge linkedin">Platform</span>
-    </div>
-    <p class="job-description">Job description...</p>
-    <div class="job-tags">
-        <span class="tag">Skill 1</span>
-        <span class="tag">Skill 2</span>
-    </div>
-    <button class="btn btn-apply">Apply Now</button>
-</div>
+### **Backend Testing**
+```bash
+cd backend
+npm run test
 ```
 
-### Adding New Platforms
-To add a new job platform:
+### **API Testing**
+```bash
+# Test health endpoint
+curl http://localhost:5000/api/health
 
-1. Add a new tab button in the platform tabs section
-2. Add corresponding CSS for the platform badge
-3. Update the JavaScript filtering logic if needed
+# Test authentication
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"firstName":"John","lastName":"Doe","email":"john@example.com","password":"Password123!"}'
+```
 
-### Modifying Colors
-The website uses CSS custom properties for easy color customization. Main colors are defined in the CSS file and can be easily modified.
+## 🚀 Deployment
 
-## 🌐 Browser Support
+### **Backend Deployment**
+1. Set environment variables
+2. Configure production database
+3. Set up reverse proxy (nginx)
+4. Use PM2 for process management
 
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+### **Frontend Deployment**
+1. Build optimized assets
+2. Deploy to CDN or web server
+3. Configure CORS for production
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit pull request
 
-## 📞 Support
+## 📝 License
 
-For support or questions, please contact:
-- Email: codecatalyst2025@gmail.com
-- Phone: +91-9378093270
+This project is licensed under the MIT License.
 
-## 🔄 Updates
+## 🆘 Support
 
-### Version 1.0.0
-- Initial release with core features
-- Job listings from multiple platforms
-- Exam preparation resources
-- Skills development section
-- Responsive design
-- Interactive application system
+For support and questions:
+- Create an issue in the repository
+- Check the API documentation
+- Review the error logs
+
+## 🔄 Roadmap
+
+### **Phase 1** ✅
+- [x] Basic website structure
+- [x] Job listings display
+- [x] Skills management system
+- [x] Exam preparation section
+
+### **Phase 2** ✅
+- [x] User authentication system
+- [x] Backend API development
+- [x] Database models and relationships
+- [x] File upload functionality
+
+### **Phase 3** 🚧
+- [ ] Real-time notifications
+- [ ] Advanced search algorithms
+- [ ] Mobile app development
+- [ ] AI-powered job matching
+
+### **Phase 4** 📋
+- [ ] Payment integration
+- [ ] Advanced analytics
+- [ ] Multi-language support
+- [ ] Enterprise features
+
+## 🎯 Use Cases
+
+### **Job Seekers**
+- Browse and apply for jobs
+- Build professional skills portfolio
+- Track certifications and achievements
+- Prepare for technical interviews
+
+### **Employers**
+- Post job openings
+- Review applications
+- Find qualified candidates
+- Manage hiring process
+
+### **Students & Professionals**
+- Access exam preparation resources
+- Track learning progress
+- Build professional network
+- Showcase skills and achievements
+
+## 🌟 Key Benefits
+
+- **All-in-One Platform**: Job search, skills management, and exam prep
+- **Professional Portfolio**: Showcase skills and certifications
+- **Modern Interface**: Clean, responsive design
+- **Secure Backend**: Robust API with authentication
+- **File Management**: PDF upload for certifications
+- **Scalable Architecture**: MERN stack for growth
 
 ---
 
-**Prepmate** - Your gateway to career opportunities, exam preparation, and skill development. 
+**Built with ❤️ using the MERN Stack**
+
+**Happy Job Hunting & Skill Building! 🚀**

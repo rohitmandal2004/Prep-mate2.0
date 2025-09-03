@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepmate - Find Your Dream Job</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="C:\Users\rohit\OneDrive\Pictures\Screenshots\Screenshot 2025-09-03 235359.png" alt="Prepmate Logo" class="logo-image">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#exam-prep">Exam Prep</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#my-skills">My Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="auth-buttons">
+                    <button class="btn btn-outline btn-sm" onclick="showLoginModal()">Login</button>
+                    <button class="btn btn-primary btn-sm" onclick="showSignupModal()">Sign Up</button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Find Your Dream Job</h1>
+                <p>Discover opportunities across top platforms, prepare for exams, and build your skills</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Browse Jobs</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional team collaborating in modern office" class="hero-photo">
+                <div class="hero-image-overlay">
+                    <div class="floating-elements">
+                        <div class="floating-card">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Job Search</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Career Growth</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-users"></i>
+                            <span>Networking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Openings Section -->
+    <section id="jobs" class="jobs-section">
+        <div class="container">
+            <h2>Latest Job Openings</h2>
+            <div class="platform-tabs">
+                <button class="tab-btn active" data-platform="all">All Platforms</button>
+                <button class="tab-btn" data-platform="linkedin">LinkedIn</button>
+                <button class="tab-btn" data-platform="indeed">Indeed</button>
+                <button class="tab-btn" data-platform="glassdoor">Glassdoor</button>
+                <button class="tab-btn" data-platform="monster">Monster</button>
+            </div>
+            <div class="jobs-grid">
+                <div class="job-card" data-platform="linkedin">
+                    <div class="job-header">
+                        <h3>Senior Software Engineer</h3>
+                        <span class="company">TechCorp Inc.</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$120k - $150k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge linkedin">LinkedIn</span>
+                    </div>
+                    <p class="job-description">Join our team to build scalable web applications using React, Node.js, and AWS.</p>
+                    <div class="job-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('Senior Software Engineer', 'TechCorp Inc.')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="indeed">
+                    <div class="job-header">
+                        <h3>Data Scientist</h3>
+                        <span class="company">DataFlow Analytics</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$100k - $130k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge indeed">Indeed</span>
+                    </div>
+                    <p class="job-description">Analyze large datasets and develop machine learning models for business insights.</p>
+                    <div class="job-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('Data Scientist', 'DataFlow Analytics')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="glassdoor">
+                    <div class="job-header">
+                        <h3>UX/UI Designer</h3>
+                        <span class="company">Design Studio Pro</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Austin, TX</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$80k - $110k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge glassdoor">Glassdoor</span>
+                    </div>
+                    <p class="job-description">Create beautiful and intuitive user experiences for web and mobile applications.</p>
+                    <div class="job-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Adobe XD</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('UX/UI Designer', 'Design Studio Pro')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="monster">
+                    <div class="job-header">
+                        <h3>Product Manager</h3>
+                        <span class="company">InnovateTech</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Seattle, WA</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$110k - $140k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge monster">Monster</span>
+                    </div>
+                    <p class="job-description">Lead product strategy and development for our SaaS platform.</p>
+                    <div class="job-tags">
+                        <span class="tag">Product Strategy</span>
+                        <span class="tag">Agile</span>
+                        <span class="tag">SaaS</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('Product Manager', 'InnovateTech')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="linkedin">
+                    <div class="job-header">
+                        <h3>DevOps Engineer</h3>
+                        <span class="company">Cloud Solutions</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$90k - $120k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge linkedin">LinkedIn</span>
+                    </div>
+                    <p class="job-description">Manage cloud infrastructure and implement CI/CD pipelines.</p>
+                    <div class="job-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('DevOps Engineer', 'Cloud Solutions')">Apply Now</button>
+                </div>
+
+                <div class="job-card" data-platform="indeed">
+                    <div class="job-header">
+                        <h3>Marketing Specialist</h3>
+                        <span class="company">Growth Marketing Co.</span>
+                        <span class="location"><i class="fas fa-map-marker-alt"></i> Chicago, IL</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="salary">$60k - $80k</span>
+                        <span class="type">Full-time</span>
+                        <span class="platform-badge indeed">Indeed</span>
+                    </div>
+                    <p class="job-description">Develop and execute digital marketing campaigns across multiple channels.</p>
+                    <div class="job-tags">
+                        <span class="tag">Digital Marketing</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Social Media</span>
+                    </div>
+                    <button class="btn btn-apply" onclick="openApplicationModal('Marketing Specialist', 'Growth Marketing Co.')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exam Prep Section -->
+    <section id="exam-prep" class="exam-prep-section">
+        <div class="container">
+            <h2>Exam Preparation Resources</h2>
+            <div class="exam-categories">
+                                 <div class="exam-category">
+                     <h3><i class="fas fa-graduation-cap"></i> Professional Certifications</h3>
+                     <div class="exam-grid">
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-aws"></i>
+                             </div>
+                             <h4>AWS Certification</h4>
+                             <p>Cloud computing and AWS services</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('aws')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-database"></i>
+                             </div>
+                             <h4>Microsoft Azure</h4>
+                             <p>Cloud platform and services</p>
+                             <div class="exam-levels">
+                                 <span class="level">Fundamentals</span>
+                                 <span class="level">Associate</span>
+                                 <span class="level">Expert</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('azure')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-shield-alt"></i>
+                             </div>
+                             <h4>CISSP</h4>
+                             <p>Information security and cybersecurity</p>
+                             <div class="exam-levels">
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('cissp')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-google"></i>
+                             </div>
+                             <h4>Google Cloud</h4>
+                             <p>Cloud infrastructure and services</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('gcp')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-network-wired"></i>
+                             </div>
+                             <h4>CCNA</h4>
+                             <p>Cisco networking fundamentals</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('ccna')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-server"></i>
+                             </div>
+                             <h4>CompTIA A+</h4>
+                             <p>IT fundamentals and hardware</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('comptia-a')">Learn More</button>
+                         </div>
+                     </div>
+                 </div>
+
+                                 <div class="exam-category">
+                     <h3><i class="fas fa-code"></i> Programming & Development</h3>
+                     <div class="exam-grid">
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-java"></i>
+                             </div>
+                             <h4>Oracle Java</h4>
+                             <p>Java programming certification</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('java')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-python"></i>
+                             </div>
+                             <h4>Python Institute</h4>
+                             <p>Python programming certification</p>
+                             <div class="exam-levels">
+                                 <span class="level">PCAP</span>
+                                 <span class="level">PCPP</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('python')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-microsoft"></i>
+                             </div>
+                             <h4>Microsoft .NET</h4>
+                             <p>.NET development certification</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Expert</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('dotnet')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-react"></i>
+                             </div>
+                             <h4>React Certification</h4>
+                             <p>Frontend development with React</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('react')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-node-js"></i>
+                             </div>
+                             <h4>Node.js Certification</h4>
+                             <p>Backend development with Node.js</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('nodejs')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fab fa-docker"></i>
+                             </div>
+                             <h4>Docker Certification</h4>
+                             <p>Containerization and DevOps</p>
+                             <div class="exam-levels">
+                                 <span class="level">Associate</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('docker')">Learn More</button>
+                         </div>
+                     </div>
+                 </div>
+
+                                 <div class="exam-category">
+                     <h3><i class="fas fa-chart-line"></i> Business & Management</h3>
+                     <div class="exam-grid">
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-project-diagram"></i>
+                             </div>
+                             <h4>PMP Certification</h4>
+                             <p>Project Management Professional</p>
+                             <div class="exam-levels">
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('pmp')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-users-cog"></i>
+                             </div>
+                             <h4>ITIL Foundation</h4>
+                             <p>IT Service Management</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                                 <span class="level">Intermediate</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('itil')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-certificate"></i>
+                             </div>
+                             <h4>Six Sigma</h4>
+                             <p>Process improvement methodology</p>
+                             <div class="exam-levels">
+                                 <span class="level">Green Belt</span>
+                                 <span class="level">Black Belt</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('six-sigma')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-chart-bar"></i>
+                             </div>
+                             <h4>PRINCE2</h4>
+                             <p>Project management methodology</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                                 <span class="level">Practitioner</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('prince2')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-balance-scale"></i>
+                             </div>
+                             <h4>Agile & Scrum</h4>
+                             <p>Agile project management</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                                 <span class="level">Advanced</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('agile-scrum')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-graduation-cap"></i>
+                             </div>
+                             <h4>MBA Specializations</h4>
+                             <p>Business administration degrees</p>
+                             <div class="exam-levels">
+                                 <span class="level">Graduate</span>
+                                 <span class="level">Executive</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('mba')">Learn More</button>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="exam-category">
+                     <h3><i class="fas fa-database"></i> Data & Analytics</h3>
+                     <div class="exam-grid">
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-brain"></i>
+                             </div>
+                             <h4>Data Science</h4>
+                             <p>Machine learning and analytics</p>
+                             <div class="exam-levels">
+                                 <span class="level">Foundation</span>
+                                 <span class="level">Professional</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('data-science')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-chart-pie"></i>
+                             </div>
+                             <h4>Tableau</h4>
+                             <p>Data visualization and BI</p>
+                             <div class="exam-levels">
+                                 <span class="level">Desktop</span>
+                                 <span class="level">Server</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('tableau')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-chart-line"></i>
+                             </div>
+                             <h4>Power BI</h4>
+                             <p>Microsoft business intelligence</p>
+                             <div class="exam-levels">
+                                 <span class="level">Data Analyst</span>
+                                 <span class="level">Developer</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('power-bi')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-database"></i>
+                             </div>
+                             <h4>SQL Certifications</h4>
+                             <p>Database management and querying</p>
+                             <div class="exam-levels">
+                                 <span class="level">Basic</span>
+                                 <span class="level">Advanced</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('sql')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-cloud"></i>
+                             </div>
+                             <h4>Snowflake</h4>
+                             <p>Cloud data platform</p>
+                             <div class="exam-levels">
+                                 <span class="level">Core</span>
+                                 <span class="level">Advanced</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('snowflake')">Learn More</button>
+                         </div>
+
+                         <div class="exam-card">
+                             <div class="exam-icon">
+                                 <i class="fas fa-chart-area"></i>
+                             </div>
+                             <h4>Apache Spark</h4>
+                             <p>Big data processing</p>
+                             <div class="exam-levels">
+                                 <span class="level">Developer</span>
+                                 <span class="level">Administrator</span>
+                             </div>
+                             <button class="btn btn-outline" onclick="openCertDetail('spark')">Learn More</button>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>Essential Skills for Your Career</h2>
+            <div class="skills-categories">
+                <div class="skills-category">
+                    <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4>Web Development</h4>
+                            <p>HTML, CSS, JavaScript, React, Angular, Vue.js</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Mobile Development</h4>
+                            <p>iOS, Android, React Native, Flutter</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4>Cloud Computing</h4>
+                            <p>AWS, Azure, Google Cloud, Docker, Kubernetes</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Data Science & AI</h4>
+                            <p>Python, R, Machine Learning, Deep Learning</p>
+                            <div class="skill-level">
+                                <span class="level-label">Demand Level:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Communication</h4>
+                            <p>Written and verbal communication skills</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Problem Solving</h4>
+                            <p>Analytical thinking and creative solutions</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h4>Teamwork</h4>
+                            <p>Collaboration and team dynamics</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Time Management</h4>
+                            <p>Prioritization and deadline management</p>
+                            <div class="skill-level">
+                                <span class="level-label">Importance:</span>
+                                <div class="level-bars">
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                    <span class="bar active"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Skills Section -->
+    <section id="my-skills" class="my-skills-section">
+        <div class="container">
+            <h2>My Skills Profile</h2>
+            <p class="section-subtitle">Manage and showcase your personal skill set</p>
+            
+            <div class="my-skills-container">
+                <div class="skills-management">
+                    <div class="add-skill-form">
+                        <h3><i class="fas fa-plus-circle"></i> Add New Skill or Certification</h3>
+                        <form id="addSkillForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="itemType">Type</label>
+                                    <select id="itemType" required onchange="toggleCertificationFields()">
+                                        <option value="skill">Skill</option>
+                                        <option value="certification">Certification</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillName">Name</label>
+                                    <input type="text" id="skillName" placeholder="e.g., Python, AWS Solutions Architect" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="skillCategory">Category</label>
+                                    <select id="skillCategory" required>
+                                        <option value="">Select Category</option>
+                                        <option value="programming">Programming Languages</option>
+                                        <option value="web-dev">Web Development</option>
+                                        <option value="database">Database & DBMS</option>
+                                        <option value="tools">Tools & Version Control</option>
+                                        <option value="frameworks">Frameworks & Libraries</option>
+                                        <option value="cloud">Cloud & DevOps</option>
+                                        <option value="security">Security & Compliance</option>
+                                        <option value="project-management">Project Management</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillLevel">Proficiency Level</label>
+                                    <select id="skillLevel" required>
+                                        <option value="">Select Level</option>
+                                        <option value="1">Beginner (1/5)</option>
+                                        <option value="2">Elementary (2/5)</option>
+                                        <option value="3">Intermediate (3/5)</option>
+                                        <option value="4">Advanced (4/5)</option>
+                                        <option value="5">Expert (5/5)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Certification-specific fields -->
+                            <div id="certificationFields" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="certIssuer">Issuing Organization</label>
+                                        <input type="text" id="certIssuer" placeholder="e.g., Amazon Web Services, Microsoft">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="certLevel">Certification Level</label>
+                                        <select id="certLevel">
+                                            <option value="">Select Level</option>
+                                            <option value="foundation">Foundation</option>
+                                            <option value="associate">Associate</option>
+                                            <option value="professional">Professional</option>
+                                            <option value="expert">Expert</option>
+                                            <option value="specialist">Specialist</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="certDate">Date Obtained</label>
+                                        <input type="date" id="certDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="certExpiry">Expiry Date</label>
+                                        <input type="date" id="certExpiry">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="certId">Certification ID</label>
+                                    <input type="text" id="certId" placeholder="e.g., AWS-123456789">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skillDescription">Description</label>
+                                <textarea id="skillDescription" placeholder="Brief description of your experience or certification details" rows="3"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="skillIcon">Icon</label>
+                                    <select id="skillIcon">
+                                        <option value="fas fa-code">Code</option>
+                                        <option value="fab fa-python">Python</option>
+                                        <option value="fab fa-js-square">JavaScript</option>
+                                        <option value="fab fa-java">Java</option>
+                                        <option value="fab fa-react">React</option>
+                                        <option value="fab fa-node-js">Node.js</option>
+                                        <option value="fas fa-database">Database</option>
+                                        <option value="fab fa-git-alt">Git</option>
+                                        <option value="fab fa-github">GitHub</option>
+                                        <option value="fab fa-html5">HTML5</option>
+                                        <option value="fab fa-css3-alt">CSS3</option>
+                                        <option value="fab fa-aws">AWS</option>
+                                        <option value="fab fa-docker">Docker</option>
+                                        <option value="fas fa-cloud">Cloud</option>
+                                        <option value="fas fa-server">Server</option>
+                                        <option value="fas fa-certificate">Certificate</option>
+                                        <option value="fas fa-shield-alt">Security</option>
+                                        <option value="fas fa-project-diagram">Project Management</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skillUrl">URL (Optional)</label>
+                                    <input type="url" id="skillUrl" placeholder="Link to certificate or portfolio">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-plus"></i> Add Item
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="my-skills-display">
+                    <div class="skills-header">
+                        <h3><i class="fas fa-user-check"></i> My Skills & Certifications</h3>
+                        <div class="skills-actions">
+                            <button class="btn btn-outline btn-sm" onclick="exportSkills()">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                            <button class="btn btn-outline btn-sm" onclick="clearAllSkills()">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-filters">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-type="skill">Skills Only</button>
+                        <button class="filter-btn" data-type="certification">Certifications Only</button>
+                        <button class="filter-btn" data-category="programming">Programming</button>
+                        <button class="filter-btn" data-category="web-dev">Web Dev</button>
+                        <button class="filter-btn" data-category="database">Database</button>
+                        <button class="filter-btn" data-category="tools">Tools</button>
+                        <button class="filter-btn" data-category="frameworks">Frameworks</button>
+                        <button class="filter-btn" data-category="cloud">Cloud</button>
+                        <button class="filter-btn" data-category="security">Security</button>
+                        <button class="filter-btn" data-category="project-management">Project Mgmt</button>
+                        <button class="filter-btn" data-category="other">Other</button>
+                    </div>
+
+                    <div id="mySkillsGrid" class="my-skills-grid">
+                        <!-- Skills will be dynamically added here -->
+                        <div class="empty-state">
+                            <i class="fas fa-plus-circle"></i>
+                            <h4>No Skills or Certifications Added Yet</h4>
+                            <p>Start building your professional profile by adding your first skill or certification above.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Have questions about job opportunities or career development? We're here to help!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>codecatalyst2025@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91-9378093270</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kolkata, North 24 Parganas</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="d1612acc-2273-4969-97d6-b7a4f6c7b2bf">
+                    <input type="hidden" name="subject" value="New Contact Form Submission - Prepmate">
+                    <input type="hidden" name="from_name" value="Prepmate Contact Form">
+                    
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="newsletter" value="yes">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for career tips and updates
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Prepmate</h4>
+                    <p>Your gateway to career opportunities, exam preparation, and skill development.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#jobs">Job Openings</a></li>
+                        <li><a href="#exam-prep">Exam Prep</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Career Guide</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Interview Tips</a></li>
+                        <li><a href="#">Salary Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with the latest job opportunities and career tips.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Prepmate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="auth-modal" id="loginModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3>Welcome Back</h3>
+                <button class="auth-modal-close" onclick="closeAuthModal('loginModal')">&times;</button>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        Continue with LinkedIn
+                    </button>
+                </div>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="switchToSignup()">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="auth-modal" id="signupModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h3>Create Account</h3>
+                <button class="auth-modal-close" onclick="closeAuthModal('signupModal')">&times;</button>
+            </div>
+            <div class="auth-modal-body">
+                <form class="auth-form" id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupFirstName">First Name</label>
+                            <input type="text" id="signupFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupLastName">Last Name</label>
+                            <input type="text" id="signupLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signupPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">Password strength</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signupConfirmPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletterSignup">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for career tips and updates
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        Continue with LinkedIn
+                    </button>
+                </div>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Application Modal -->
+    <div class="application-modal" id="applicationModal">
+        <div class="application-modal-content">
+            <div class="application-modal-header">
+                <h3>Apply for <span id="jobTitle">Position</span></h3>
+                <button class="application-modal-close" onclick="closeApplicationModal()">&times;</button>
+            </div>
+            <div class="application-modal-body">
+                <form class="application-form" id="applicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicantFirstName">First Name *</label>
+                            <input type="text" id="applicantFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantLastName">Last Name *</label>
+                            <input type="text" id="applicantLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="applicantEmail">Email *</label>
+                            <input type="email" id="applicantEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantPhone">Phone</label>
+                            <input type="tel" id="applicantPhone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantLocation">Location</label>
+                        <input type="text" id="applicantLocation" placeholder="City, State/Country">
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantExperience">Years of Experience</label>
+                        <select id="applicantExperience">
+                            <option value="">Select experience level</option>
+                            <option value="0-1">0-1 years</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5-7">5-7 years</option>
+                            <option value="7-10">7-10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicantSkills">Key Skills</label>
+                        <input type="text" id="applicantSkills" placeholder="e.g., React, Node.js, Python, AWS">
+                    </div>
+                    <div class="form-group">
+                        <label for="coverLetter">Cover Letter</label>
+                        <textarea id="coverLetter" rows="4" placeholder="Tell us why you're interested in this position and what makes you a great fit..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvUpload">Upload CV/Resume *</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="cvUpload" accept=".pdf,.doc,.docx" required>
+                            <div class="file-upload-info">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <span class="file-types">PDF, DOC, DOCX (Max 5MB)</span>
+                            </div>
+                        </div>
+                        <div class="file-preview" id="filePreview" style="display: none;">
+                            <div class="file-info">
+                                <i class="fas fa-file-alt"></i>
+                                <span id="fileName"></span>
+                                <button type="button" class="remove-file" onclick="removeCVFile()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolioUrl">Portfolio/Website URL</label>
+                        <input type="url" id="portfolioUrl" placeholder="https://your-portfolio.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedinUrl">LinkedIn Profile</label>
+                        <input type="url" id="linkedinUrl" placeholder="https://linkedin.com/in/your-profile">
+                    </div>
+                    <div class="form-group">
+                        <label for="githubUrl">GitHub Profile</label>
+                        <input type="url" id="githubUrl" placeholder="https://github.com/your-username">
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeApplication" required>
+                            <span class="checkmark"></span>
+                            I confirm that all information provided is accurate and I agree to the <a href="#" target="_blank">Terms of Application</a>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="allowContact">
+                            <span class="checkmark"></span>
+                            I allow the company to contact me regarding this application
+                        </label>
+                    </div>
+                    <div class="application-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeApplicationModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+         <!-- Certification Detail Modal -->
+     <div class="cert-detail-modal" id="certDetailModal">
+         <div class="cert-detail-content">
+             <div class="cert-detail-header">
+                 <h3 id="certDetailTitle">Certification Details</h3>
+                 <button class="cert-detail-close" onclick="closeCertDetail()">&times;</button>
+             </div>
+             <div class="cert-detail-body">
+                 <div class="cert-overview">
+                     <div class="cert-icon-large" id="certDetailIcon">
+                         <i class="fas fa-certificate"></i>
+                     </div>
+                     <div class="cert-info">
+                         <h4 id="certDetailName">Certification Name</h4>
+                         <p id="certDetailDescription">Detailed description of the certification</p>
+                         <div class="cert-meta">
+                             <span class="meta-item"><i class="fas fa-clock"></i> Duration: <span id="certDetailDuration">3-6 months</span></span>
+                             <span class="meta-item"><i class="fas fa-dollar-sign"></i> Cost: <span id="certDetailCost">$150-300</span></span>
+                             <span class="meta-item"><i class="fas fa-calendar"></i> Validity: <span id="certDetailValidity">3 years</span></span>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="cert-details-tabs">
+                     <div class="tab-buttons">
+                         <button class="tab-btn active" data-tab="overview">Overview</button>
+                         <button class="tab-btn" data-tab="prerequisites">Prerequisites</button>
+                         <button class="tab-btn" data-tab="exam-details">Exam Details</button>
+                         <button class="tab-btn" data-tab="career-benefits">Career Benefits</button>
+                         <button class="tab-btn" data-tab="study-resources">Study Resources</button>
+                     </div>
+                     
+                     <div class="tab-content">
+                         <div class="tab-pane active" id="overview">
+                             <div id="overviewContent">
+                                 <!-- Content will be loaded dynamically -->
+                             </div>
+                         </div>
+                         
+                         <div class="tab-pane" id="prerequisites">
+                             <div id="prerequisitesContent">
+                                 <!-- Content will be loaded dynamically -->
+                             </div>
+                         </div>
+                         
+                         <div class="tab-pane" id="exam-details">
+                             <div id="examDetailsContent">
+                                 <!-- Content will be loaded dynamically -->
+                             </div>
+                         </div>
+                         
+                         <div class="tab-pane" id="career-benefits">
+                             <div id="careerBenefitsContent">
+                                 <!-- Content will be loaded dynamically -->
+                             </div>
+                         </div>
+                         
+                         <div class="tab-pane" id="study-resources">
+                             <div id="studyResourcesContent">
+                                 <!-- Content will be loaded dynamically -->
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <div class="cert-actions">
+                     <button class="btn btn-primary" onclick="enrollCertification()">
+                         <i class="fas fa-graduation-cap"></i> Enroll Now
+                     </button>
+                     <button class="btn btn-outline" onclick="downloadSyllabus()">
+                         <i class="fas fa-download"></i> Download Syllabus
+                     </button>
+                     <button class="btn btn-outline" onclick="scheduleConsultation()">
+                         <i class="fas fa-calendar-alt"></i> Schedule Consultation
+                     </button>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <script src="script.js"></script>
+ </body>
+ </html>
