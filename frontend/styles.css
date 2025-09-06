@@ -41,6 +41,7 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     color: #1e3a8a;
     font-size: 1.5rem;
     font-weight: 700;
@@ -48,11 +49,8 @@ body {
 }
 
 .nav-logo img {
-    height: 40px;
-    width: auto;
     margin-right: 0.5rem;
-    /* margin-right: 0.5rem;
-    font-size: 1.8rem; */
+    font-size: 1.8rem;
 }
 
 .nav-menu {
