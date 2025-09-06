@@ -51,6 +51,11 @@ body {
     margin-right: 0.5rem;
     font-size: 1.8rem;
 }
+.logo-image{
+    height: 40px;
+    width: auto;
+    margin-right: 0.5rem;
+}
 
 .nav-menu {
     display: flex;
