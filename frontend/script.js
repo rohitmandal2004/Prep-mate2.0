@@ -6,6 +6,23 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
 });
+// Wait until DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Reference buttons by id
+    const browseJobsBtn = document.getElementById('browse-jobs-btn');
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    // Add click event to Browse Jobs button
+    browseJobsBtn.addEventListener('click', function () {
+        // Redirect to the "jobs" page or section
+        window.location.href = '#jobs';  // put the path to your jobs page
+    });
+    // Add click event to Learn More button
+    learnMoreBtn.addEventListener('click', function () {
+        // Redirect to the "about" page or specific section
+        // Or open a modal or expand content, adjust as necessary
+        window.location.href = '#contact'; // put the path to your learn more page
+    });
+});
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -40,6 +57,7 @@ tabButtons.forEach(button => {
         });
     });
 });
+
 
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

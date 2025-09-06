@@ -1,4 +1,10 @@
 /* Reset and Base Styles */
+:root {
+    --primary-color: #6366f1;   /* Indigo */
+    --secondary-color: #3b82f6; /* Blue */
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +53,7 @@ body {
     text-decoration: none;
 }
 
-.nav-logo i {
+.nav-logo img {
     margin-right: 0.5rem;
     font-size: 1.8rem;
 }
@@ -397,7 +403,11 @@ section h2 {
     border: 1px solid #e1e8ed;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes button to bottom */
 }
+
 
 .job-card:hover {
     transform: translateY(-5px);
