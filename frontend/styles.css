@@ -406,8 +406,8 @@ section h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* pushes button to bottom */
-
 }
+
 
 .job-card:hover {
     transform: translateY(-5px);
