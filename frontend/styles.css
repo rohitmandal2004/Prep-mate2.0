@@ -47,14 +47,12 @@ body {
     text-decoration: none;
 }
 
-/* .nav-logo img {
-    margin-right: 0.5rem;
-    font-size: 1.8rem;
-} */
-.logo-image{
+.nav-logo img {
     height: 40px;
     width: auto;
     margin-right: 0.5rem;
+    /* margin-right: 0.5rem;
+    font-size: 1.8rem; */
 }
 
 .nav-menu {
