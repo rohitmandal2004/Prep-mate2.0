@@ -1,4 +1,10 @@
 /* Reset and Base Styles */
+:root {
+    --primary-color: #6366f1;   /* Indigo */
+    --secondary-color: #3b82f6; /* Blue */
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -41,7 +47,6 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     color: #1e3a8a;
     font-size: 1.5rem;
     font-weight: 700;
@@ -398,6 +403,10 @@ section h2 {
     border: 1px solid #e1e8ed;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes button to bottom */
+
 }
 
 .job-card:hover {
