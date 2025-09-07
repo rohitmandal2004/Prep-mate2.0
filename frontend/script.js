@@ -2216,49 +2216,100 @@ async function displayJobs(jobs) {
 }
 
 function createJobCard(job) {
+    // Helper: format location into a display string
+    function formatLocation(loc) {
+        if (!loc) return 'Location not specified';
+        if (typeof loc === 'string') return loc;
+        // If loc is an object
+        if (loc.city && loc.state) return `${loc.city}, ${loc.state}`;
+        if (loc.city && loc.country) return `${loc.city}, ${loc.country}`;
+        if (loc.city) return loc.city;
+        if (loc.state) return loc.state;
+        if (loc.type) return loc.type; // e.g., Remote, On-site, Hybrid
+        // Fallback to join any available fields
+        return [loc.city, loc.state, loc.country, loc.type].filter(Boolean).join(', ') || 'Location not specified';
+    }
+
+    // Helper: prefer job.jobType, then job.type, then a sensible default
+    function formatJobType(j) {
+        return j.jobType || j.type || 'Full-time';
+    }
+
+    // Helper: format salary when it's provided as a string or an object
+    function formatSalary(s) {
+        if (!s) return 'Not disclosed';
+        if (typeof s === 'string') return s;
+        // If salary is an object { min, max, currency, period }
+        if (typeof s === 'object') {
+            const { min, max, currency, period } = s;
+            // If INR numeric values provided, convert to Lakh format for display
+            if (currency === 'INR' || currency === '₹') {
+                const toL = v => (v >= 100000 ? `${(v/100000).toFixed(v%100000===0?0:1)}L` : `${v}`);
+                if (min && max) return `₹${toL(min)} - ₹${toL(max)}`;
+                if (min) return `₹${toL(min)}`;
+            }
+            // Generic fallback
+            if (min && max) return `${min} - ${max} ${currency || ''} ${period ? '('+period+')' : ''}`;
+            if (min) return `${min} ${currency || ''}`;
+        }
+        return 'Not disclosed';
+    }
+
+    // Helper: extract company name regardless of shape
+    const companyName = job.company ? (job.company.name || job.company) : 'Unknown Company';
+    const locationText = formatLocation(job.location);
+    const jobTypeText = formatJobType(job);
+    const salaryText = job.salaryRange || formatSalary(job.salary) || job.salary || 'Not disclosed';
+
     const card = document.createElement('div');
     card.className = 'job-card';
+
+    // Build requirements tags safely
+    const rawReqs = job.requirements;
+    let reqSkills = [];
+    if (Array.isArray(rawReqs)) reqSkills = rawReqs;
+    else if (rawReqs && Array.isArray(rawReqs.skills)) reqSkills = rawReqs.skills.map(r => (typeof r === 'string' ? r : r.name));
+    else if (rawReqs && rawReqs.length) reqSkills = rawReqs;
+
     card.innerHTML = `
         <div class="job-header">
-            <h3>${job.title}</h3>
+            <h3>${job.title || 'Untitled Role'}</h3>
             ${job.isUrgent ? '<span class="urgent-badge">Urgent</span>' : ''}
         </div>
         <div class="company-info">
             <i class="fas fa-building"></i>
-            <span>${job.company.name || job.company}</span>
+            <span>${companyName}</span>
         </div>
         <div class="job-details">
             <div class="detail">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>${job.location.type || job.location}</span>
+                <span>${locationText}</span>
             </div>
             <div class="detail">
                 <i class="fas fa-clock"></i>
-                <span>${job.jobType}</span>
+                <span>${jobTypeText}</span>
             </div>
             <div class="detail">
                 <i class="fas fa-money-bill-wave"></i>
-                <span>${job.salaryRange || job.salary}</span>
+                <span>${salaryText}</span>
             </div>
         </div>
-        <p class="job-description">${job.description}</p>
+        <p class="job-description">${job.description || ''}</p>
         <div class="requirements">
             <strong>Requirements:</strong>
             <div class="tags">
-                ${(job.requirements?.skills || job.requirements || []).map(req => {
-                    const skillName = typeof req === 'string' ? req : req.name;
-                    return `<span class="tag">${skillName}</span>`;
-                }).join('')}
+                ${reqSkills.map(req => `<span class="tag">${req}</span>`).join('')}
             </div>
         </div>
         <div class="platform-info">
             <i class="fas fa-external-link-alt"></i>
-            <span>via ${job.platform}</span>
+            <span>via ${job.platform || job.source || ''}</span>
         </div>
-        <button class="apply-btn" onclick="openApplicationModal('${job.title}', '${job.company.name || job.company}')">
+        <button class="apply-btn" onclick="openApplicationModal('${(job.title||'').replace(/'/g,"\'")}', '${(companyName||'').replace(/'/g,"\'")}')">
             Apply Now
         </button>
     `;
+
     return card;
 }
 
@@ -2325,59 +2376,8 @@ function closeApplicationModal() {
     const modal = document.getElementById('applicationModal');
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
-    
-    // Reset form
-    document.getElementById('applicationForm').reset();
-    hideFilePreview();
 }
 
-// CV File Upload Functions
-function handleCVUpload() {
-    const fileInput = document.getElementById('cvUpload');
-    const file = fileInput.files[0];
-    
-    if (file) {
-        // Validate file size (5MB limit)
-        if (file.size > 5 * 1024 * 1024) {
-            alert('File size must be less than 5MB');
-            fileInput.value = '';
-            return;
-        }
-        
-        // Validate file type
-        const allowedTypes = ['.pdf', '.doc', '.docx'];
-        const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
-        
-        if (!allowedTypes.includes(fileExtension)) {
-            alert('Please upload a PDF, DOC, or DOCX file');
-            fileInput.value = '';
-            return;
-        }
-        
-        showFilePreview(file);
-    }
-}
-
-function showFilePreview(file) {
-    const filePreview = document.getElementById('filePreview');
-    const fileName = document.getElementById('fileName');
-    
-    fileName.textContent = file.name;
-    filePreview.style.display = 'block';
-}
-
-function hideFilePreview() {
-    const filePreview = document.getElementById('filePreview');
-    filePreview.style.display = 'none';
-}
-
-function removeCVFile() {
-    const fileInput = document.getElementById('cvUpload');
-    fileInput.value = '';
-    hideFilePreview();
-}
-
-// Application Form Submission
 function handleApplicationSubmit(event) {
     event.preventDefault();
     
@@ -2426,7 +2426,6 @@ function handleApplicationSubmit(event) {
         
         // Reset form and close modal
         form.reset();
-        hideFilePreview();
         closeApplicationModal();
         
         // Reset button
