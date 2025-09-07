@@ -101,6 +101,18 @@ router.get('/', optionalAuth, async (req, res) => {
       });
     }
 
+
+res.json({
+  jobs: jobsResponse,
+  pagination: {
+    currentPage: parseInt(page),
+    totalPages: Math.ceil(total / parseInt(limit)),
+    totalJobs: total,
+    hasNext: skip + jobs.length < total,
+    hasPrev: parseInt(page) > 1
+  }
+});
+
     res.json({
       jobs,
       pagination: {
