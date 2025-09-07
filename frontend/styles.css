@@ -3,8 +3,6 @@
     --primary-color: #6366f1;   /* Indigo */
     --secondary-color: #3b82f6; /* Blue */
 }
-
-
 * {
     margin: 0;
     padding: 0;
@@ -1471,6 +1469,44 @@ html {
     font-size: 0.8rem;
     font-weight: bold;
 }
+/* Hides the native checkbox */
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom box */
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Checked state */
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
 
 .forgot-password {
     color: #1e3a8a;

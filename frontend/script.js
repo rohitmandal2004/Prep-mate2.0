@@ -2746,12 +2746,1290 @@ function getCertificationData(certType) {
                     </ul>
                 `
             }
+        },
+        'cissp': {
+        title: 'CISSP Certification Details',
+        name: 'CISSP',
+        description: 'Information security and cybersecurity certification for professionals.',
+        duration: '4-6 months',
+        cost: '$699',
+        validity: '3 years',
+        icon: 'fas fa-shield-alt',
+        overview: {
+            content: `
+                <h5>What is CISSP?</h5>
+                <p>CISSP (Certified Information Systems Security Professional) is a globally recognized certification in information security, covering security and risk management, asset security, and network security.</p>
+                <h5>Why Choose CISSP?</h5>
+                    <ul>
+                        <li>Enterprise-focused cloud platform</li>
+                        <li>Strong integration with Microsoft ecosystem</li>
+                        <li>Growing market share</li>
+                        <li>Excellent for enterprise careers</li>
+                    </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Minimum 5 years of professional experience in security</li>
+                    <li>Understanding of security concepts and principles</li>
+                    <li>Knowledge of information systems and risk management</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple-choice and advanced innovative questions</li>
+                    <li>250 questions</li>
+                    <li>6 hours duration</li>
+                    <li>Passing score: 700/1000</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Average salary: $90,000 - $140,000</li>
+                    <li>Roles: Security Analyst, Security Engineer, Security Architect</li>
+                    <li>High demand globally for cybersecurity professionals</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Recommended Resources</h5>
+                <ul>
+                    <li>(ISC)² Official Study Guide</li>
+                    <li>Practice Exams and Labs</li>
+                    <li>Online Training Platforms</li>
+                </ul>
+            `
         }
-        // Add more certifications as needed
-    };
+    },
+
+    'gcp': {
+        title: 'Google Cloud Certification Details',
+        name: 'Google Cloud',
+        description: 'Cloud infrastructure and services certification by Google.',
+        duration: '3-6 months',
+        cost: '$125-$200 per exam',
+        validity: '2 years',
+        icon: 'fab fa-google',
+        overview: {
+            content: `
+                <h5>What is Google Cloud Certification?</h5>
+                <p>Validates your ability to design, develop, and manage applications on Google Cloud Platform across multiple services and environments.</p>
+                <h5>Why Choose Google Cloud?</h5>
+                    <ul>
+                        <li>Enterprise-focused cloud platform</li>
+                        <li>Strong integration with Microsoft ecosystem</li>
+                        <li>Growing market share</li>
+                        <li>Excellent for enterprise careers</li>
+                    </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Basic Requirements</h5>
+                <ul>
+                    <li>Basic cloud knowledge</li>
+                    <li>Experience with GCP services recommended</li>
+                    <li>Understanding of DevOps and networking concepts</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and multiple select</li>
+                    <li>60-90 minutes (Associate), 2 hours (Professional)</li>
+                    <li>Passing score varies by exam</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Salary Impact</h5>
+                <ul>
+                    <li>Average salary: $70,000 - $130,000</li>
+                    <li>Roles: Cloud Engineer, Cloud Architect, DevOps Engineer</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Official Resources</h5>
+                <ul>
+                    <li>Google Cloud Training</li>
+                    <li>Coursera / Qwiklabs Labs</li>
+                    <li>Practice Exams</li>
+                </ul>
+            `
+        }
+    },
+
+    'ccna': {
+        title: 'CCNA Certification Details',
+        name: 'CCNA',
+        description: 'Cisco networking fundamentals certification.',
+        duration: '3-6 months',
+        cost: '$300',
+        validity: '3 years',
+        icon: 'fas fa-network-wired',
+        overview: {
+            content: `
+                <h5>What is CCNA?</h5>
+                <p>CCNA (Cisco Certified Network Associate) validates your ability to install, configure, operate, and troubleshoot medium-size routed and switched networks.</p>
+                <h5>Why Choose CCNA?</h5>
+                    <ul>
+                        <li>Enterprise-focused cloud platform</li>
+                        <li>Strong integration with Microsoft ecosystem</li>
+                        <li>Growing market share</li>
+                        <li>Excellent for enterprise careers</li>
+                    </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic understanding of networking</li>
+                    <li>Knowledge of IP addressing and routing</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice, drag-and-drop, simulations</li>
+                    <li>120 minutes duration</li>
+                    <li>Passing score: ~825/1000</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Average salary: $60,000 - $100,000</li>
+                    <li>Roles: Network Engineer, System Administrator</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Recommended Resources</h5>
+                <ul>
+                    <li>Cisco Official Guide</li>
+                    <li>Lab Simulations</li>
+                    <li>Practice Exams</li>
+                </ul>
+            `
+        }
+    },
+
+    'comptia-a': {
+        title: 'CompTIA A+ Certification Details',
+        name: 'CompTIA A+',
+        description: 'IT fundamentals and hardware certification.',
+        duration: '2-4 months',
+        cost: '$246 per exam',
+        validity: '3 years',
+        icon: 'fas fa-server',
+        overview: {
+            content: `
+                <h5>What is CompTIA A+?</h5>
+                <p>CompTIA A+ validates foundational IT skills, including hardware, networking, mobile devices, operating systems, and troubleshooting.</p>
+                <h5>Why Choose CompTIA A+?</h5>
+                    <ul>
+                        <li>Enterprise-focused cloud platform</li>
+                        <li>Strong integration with Microsoft ecosystem</li>
+                        <li>Growing market share</li>
+                        <li>Excellent for enterprise careers</li>
+                    </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>No prior certification required</li>
+                    <li>Recommended 9-12 months of IT experience</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice, drag-and-drop</li>
+                    <li>Two exams (Core 1 and Core 2)</li>
+                    <li>90 minutes per exam</li>
+                    <li>Passing score: varies per exam</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Average salary: $50,000 - $70,000</li>
+                    <li>Roles: IT Support, Help Desk Technician, Technical Support</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Recommended Resources</h5>
+                <ul>
+                    <li>CompTIA Official Study Guide</li>
+                    <li>Practice Labs and Tests</li>
+                </ul>
+            `
+        }
+    },
+    python: {
+        title: 'Python Institute Certification Details',
+        name: 'Python Institute',
+        description: 'Python programming certification covering foundational to advanced skills.',
+        duration: '2-5 months',
+        cost: '$150-$300',
+        validity: '3 years',
+        icon: 'fab fa-python',
+        overview: {
+            content: `
+                <h5>What is Python Institute Certification?</h5>
+                <p>Validates your proficiency in Python programming, from basic coding concepts to advanced development practices.</p>
+                <h5>Why Choose Python Certification?</h5>
+                <ul>
+                    <li>Python is widely used in web development, AI/ML, and data analytics</li>
+                    <li>High demand for Python developers</li>
+                    <li>Strong community and learning resources</li>
+                    <li>Enhances career opportunities and salary potential</li>
+                </ul>
+            
+            `
+        },
+        
+
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic programming knowledge recommended</li>
+                    <li>Familiarity with Python syntax helpful</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>PCAP: Entry-level exam</li>
+                    <li>PCPP: Advanced-level exam</li>
+                    <li>Duration: 90-120 minutes</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Python Developer, Data Analyst, AI/ML Engineer</li>
+                    <li>Average salary: $60,000 - $120,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Python Institute Official Study Guides</li>
+                    <li>Practice labs and coding exercises</li>
+                    <li>Online courses and tutorials</li>
+                </ul>
+            `
+        }
+    },
+
+    dotnet: {
+        title: 'Microsoft .NET Certification Details',
+        name: 'Microsoft .NET',
+        description: '.NET development certification covering C# and application development.',
+        duration: '3-6 months',
+        cost: '$165-$250',
+        validity: '2 years',
+        icon: 'fab fa-microsoft',
+        overview: {
+            content: `
+                <h5>What is Microsoft .NET Certification?</h5>
+                <p>Validates your skills in developing desktop, web, and cloud applications using the .NET framework.</p>
+                <h5>Why Choose .NET Certification?</h5>
+                <ul>
+                    <li>.NET is widely used in enterprise software development</li>
+                    <li>Strong demand for full-stack and backend developers</li>
+                    <li>Enhances problem-solving and software architecture skills</li>
+                    <li>Opens opportunities in Microsoft ecosystem</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic programming knowledge</li>
+                    <li>Familiarity with C# or any object-oriented language</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>Performance-based tasks</li>
+                    <li>Duration: 90-120 minutes</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: .NET Developer, Full-Stack Developer</li>
+                    <li>Average salary: $70,000 - $120,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Microsoft Learn</li>
+                    <li>Official Microsoft documentation</li>
+                    <li>Hands-on labs and practice projects</li>
+                </ul>
+            `
+        }
+    },
+
+    react: {
+        title: 'React Certification Details',
+        name: 'React',
+        description: 'Frontend development certification focusing on React.js framework.',
+        duration: '2-4 months',
+        cost: '$150-$300',
+        validity: '2 years',
+        icon: 'fab fa-react',
+        overview: {
+            content: `
+                <h5>What is React Certification?</h5>
+                <p>Validates your skills in building dynamic, responsive web applications using the React framework.</p>
+                <h5>Why Choose React Certification?</h5>
+                <ul>
+                    <li>React is the most popular frontend library for web development</li>
+                    <li>High demand for React developers in startups and enterprises</li>
+                    <li>Improves your frontend development skills</li>
+                    <li>Enables career growth in web and mobile development</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic knowledge of HTML, CSS, JavaScript</li>
+                    <li>Understanding of component-based architecture</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>Hands-on coding tasks</li>
+                    <li>Duration: 90-120 minutes</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Frontend Developer, UI Engineer</li>
+                    <li>Average salary: $65,000 - $110,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Official React documentation</li>
+                    <li>Online tutorials and coding challenges</li>
+                    <li>React practice projects</li>
+                </ul>
+            `
+        }
+    },
+
+    nodejs: {
+        title: 'Node.js Certification Details',
+        name: 'Node.js',
+        description: 'Backend development certification focusing on Node.js runtime.',
+        duration: '2-4 months',
+        cost: '$150-$250',
+        validity: '2 years',
+        icon: 'fab fa-node-js',
+        overview: {
+            content: `
+                <h5>What is Node.js Certification?</h5>
+                <p>Validates your skills in building scalable backend applications using Node.js and associated technologies.</p>
+                <h5>Why Choose Node.js Certification?</h5>
+                <ul>
+                    <li>Node.js is widely used for backend and full-stack development</li>
+                    <li>High demand for scalable server-side solutions</li>
+                    <li>Enhances career prospects in backend and full-stack roles</li>
+                    <li>Supports modern development with JavaScript across front and back-end</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic JavaScript knowledge</li>
+                    <li>Understanding of server-side concepts</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and coding exercises</li>
+                    <li>Duration: 90-120 minutes</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Backend Developer, Full-Stack Developer</li>
+                    <li>Average salary: $70,000 - $120,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Official Node.js documentation</li>
+                    <li>Online tutorials and labs</li>
+                    <li>Practice projects and coding challenges</li>
+                </ul>
+            `
+        }
+    },
+
+    docker: {
+        title: 'Docker Certification Details',
+        name: 'Docker',
+        description: 'Containerization and DevOps certification using Docker technology.',
+        duration: '2-3 months',
+        cost: '$195',
+        validity: '2 years',
+        icon: 'fab fa-docker',
+        overview: {
+            content: `
+                <h5>What is Docker Certification?</h5>
+                <p>Validates your ability to build, deploy, and manage containerized applications using Docker.</p>
+                <h5>Why Choose Docker Certification?</h5>
+                <ul>
+                    <li>Docker is essential for modern DevOps and microservices development</li>
+                    <li>High demand in cloud-native development roles</li>
+                    <li>Improves deployment and CI/CD skills</li>
+                    <li>Widely recognized by tech employers</li>
+                </ul>
+            `
+        },
+
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic knowledge of Linux and command-line tools</li>
+                    <li>Understanding of software development lifecycle</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and practical tasks</li>
+                    <li>Duration: 90 minutes</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: DevOps Engineer, Site Reliability Engineer, Backend Developer</li>
+                    <li>Average salary: $80,000 - $130,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Docker official documentation</li>
+                    <li>Hands-on labs</li>
+                    <li>Practice exams and courses</li>
+                </ul>
+            `
+        }
     
+},
+    pmp: {
+        title: 'PMP Certification Details',
+        name: 'PMP',
+        description: 'Project Management Professional certification for managing projects effectively.',
+        duration: '3-6 months',
+        cost: '$555-$615',
+        validity: '3 years',
+        icon: 'fas fa-project-diagram',
+        overview: {
+            content: `
+                <h5>What is PMP?</h5>
+                <p>PMP certification validates your skills in project management, including planning, execution, monitoring, and closure of projects across industries.</p>
+                <h5>Why Choose PMP?</h5>
+                <ul>
+                    <li>Globally recognized project management certification</li>
+                    <li>Enhances leadership and management skills</li>
+                    <li>High demand for certified project managers</li>
+                    <li>Increases salary potential and career growth</li>
+                </ul>
+            `
+        },
+        
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Secondary degree with 5 years project management experience OR</li>
+                    <li>Bachelor’s degree with 3 years project management experience</li>
+                    <li>35 hours of project management education</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>200 multiple-choice questions</li>
+                    <li>Duration: 4 hours</li>
+                    <li>Passing score: Varies by exam form</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Project Manager, Program Manager</li>
+                    <li>Average salary: $90,000 - $140,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>PMI Official Guide</li>
+                    <li>PMP Prep Courses and Bootcamps</li>
+                    <li>Practice Exams and Simulations</li>
+                </ul>
+            `
+        }
+    },
+
+    itil: {
+        title: 'ITIL Foundation Certification Details',
+        name: 'ITIL',
+        description: 'IT service management certification for optimizing IT services.',
+        duration: '1-3 months',
+        cost: '$200-$400',
+        validity: '3 years',
+        icon: 'fas fa-users-cog',
+        overview: {
+            content: `
+                <h5>What is ITIL?</h5>
+                <p>ITIL certification provides a framework for IT service management, helping organizations deliver high-quality IT services efficiently.</p>
+                <h5>Why Choose ITIL?</h5>
+                <ul>
+                    <li>Standardized IT service management framework</li>
+                    <li>Improves process efficiency and service delivery</li>
+                    <li>Recognized globally in IT industry</li>
+                    <li>Enhances IT career prospects</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>No prior experience required for Foundation level</li>
+                    <li>Intermediate levels require professional experience in ITSM</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>Duration: 60 minutes</li>
+                    <li>Passing score: 65%</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: IT Service Manager, IT Consultant</li>
+                    <li>Average salary: $60,000 - $110,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>AXELOS Official ITIL Guide</li>
+                    <li>Online courses and practice exams</li>
+                    <li>Workshops and labs</li>
+                </ul>
+            `
+        }
+    },
+
+    'six-sigma': {
+        title: 'Six Sigma Certification Details',
+        name: 'Six Sigma',
+        description: 'Process improvement methodology certification (Green Belt & Black Belt).',
+        duration: '2-5 months',
+        cost: '$400-$800',
+        validity: '3 years',
+        icon: 'fas fa-certificate',
+        overview: {
+            content: `
+                <h5>What is Six Sigma?</h5>
+                <p>Six Sigma certification teaches process improvement techniques to reduce defects, improve quality, and increase efficiency.</p>
+                <h5>Why Choose Six Sigma?</h5>
+                <ul>
+                    <li>Recognized globally for quality and process management</li>
+                    <li>Applicable across industries</li>
+                    <li>Enhances analytical and problem-solving skills</li>
+                    <li>Improves career prospects and salary</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic understanding of business processes</li>
+                    <li>Experience in process improvement recommended for Black Belt</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions</li>
+                    <li>Duration: 2-4 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Process Improvement Specialist, Quality Manager</li>
+                    <li>Average salary: $70,000 - $130,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Official Six Sigma Guides</li>
+                    <li>Online courses and simulations</li>
+                    <li>Practice exams and workshops</li>
+                </ul>
+            `
+        }
+    },
+
+    prince2: {
+        title: 'PRINCE2 Certification Details',
+        name: 'PRINCE2',
+        description: 'Project management methodology certification (Foundation & Practitioner).',
+        duration: '1-3 months',
+        cost: '$400-$600',
+        validity: '5 years',
+        icon: 'fas fa-chart-bar',
+        overview: {
+            content: `
+                <h5>What is PRINCE2?</h5>
+                <p>PRINCE2 certification teaches a structured project management methodology recognized worldwide for effective project delivery.</p>
+                <h5>Why Choose PRINCE2?</h5>
+                <ul>
+                    <li>Globally recognized project management framework</li>
+                    <li>Applicable in government and private sector projects</li>
+                    <li>Improves project planning, monitoring, and control skills</li>
+                    <li>Boosts career growth in project management</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>No prior experience required for Foundation</li>
+                    <li>Practitioner level requires Foundation certification</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Foundation: 60 multiple choice questions, 60 mins</li>
+                    <li>Practitioner: Scenario-based, 68 questions, 150 mins</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Project Manager, Program Manager</li>
+                    <li>Average salary: $80,000 - $130,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>AXELOS PRINCE2 Manual</li>
+                    <li>Practice exams and mock projects</li>
+                    <li>Online courses and bootcamps</li>
+                </ul>
+            `
+        }
+    },
+
+    'agile-scrum': {
+        title: 'Agile & Scrum Certification Details',
+        name: 'Agile & Scrum',
+        description: 'Agile project management certification covering Scrum methodology.',
+        duration: '1-3 months',
+        cost: '$200-$500',
+        validity: '2 years',
+        icon: 'fas fa-balance-scale',
+        overview: {
+            content: `
+                <h5>What is Agile & Scrum Certification?</h5>
+                <p>Validates your knowledge of Agile principles and Scrum framework for iterative and flexible project delivery.</p>
+                <h5>Why Choose Agile & Scrum?</h5>
+                <ul>
+                    <li>Agile is widely used in software and business projects</li>
+                    <li>Improves team collaboration and productivity</li>
+                    <li>High demand for certified Scrum Masters and Agile practitioners</li>
+                    <li>Enhances adaptability in dynamic project environments</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>No prior experience required for Foundation</li>
+                    <li>Advanced levels require Agile project experience</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice or scenario-based questions</li>
+                    <li>Duration: 60-120 mins depending on level</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Scrum Master, Agile Coach, Project Manager</li>
+                    <li>Average salary: $70,000 - $120,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Scrum Guide Official Documentation</li>
+                    <li>Online courses and practice exams</li>
+                    <li>Workshops and hands-on simulations</li>
+                </ul>
+            `
+        }
+    },
+
+    mba: {
+        title: 'MBA Specializations Certification Details',
+        name: 'MBA',
+        description: 'Business administration degrees with various specializations.',
+        duration: '1-2 years',
+        cost: '$20,000-$80,000',
+        validity: 'Degree-based',
+        icon: 'fas fa-graduation-cap',
+        overview: {
+            content: `
+                <h5>What is an MBA?</h5>
+                <p>MBA programs provide advanced business knowledge and management skills across various specializations like Finance, Marketing, HR, and Operations.</p>
+                <h5>Why Choose an MBA?</h5>
+                <ul>
+                    <li>Widely recognized business qualification globally</li>
+                    <li>Enhances leadership and managerial skills</li>
+                    <li>Opens career opportunities in multiple industries</li>
+                    <li>Significant increase in earning potential</li>
+                </ul>
+            `
+        },
+        
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Bachelor’s degree in any discipline</li>
+                    <li>Work experience preferred for executive programs</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Program-based assessments, case studies, and exams</li>
+                    <li>Varies by university and specialization</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Manager, Executive, Entrepreneur</li>
+                    <li>Average salary: $80,000 - $150,000 depending on specialization</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>University MBA curriculum</li>
+                    <li>Case studies and business simulations</li>
+                    <li>Workshops, seminars, and online resources</li>
+                </ul>
+            `
+        }
+    },
+    'data-science': {
+        title: 'Data Science Certification Details',
+        name: 'Data Science',
+        description: 'Certification covering machine learning, analytics, and AI applications.',
+        duration: '3-6 months',
+        cost: '$200-$500',
+        validity: '2 years',
+        icon: 'fas fa-brain',
+        overview: {
+            content: `
+                <h5>What is Data Science Certification?</h5>
+                <p>Validates your ability to analyze, interpret, and apply data using statistical and machine learning techniques.</p>
+                <h5>Why Choose Data Science?</h5>
+                <ul>
+                    <li>High demand for data scientists across industries</li>
+                    <li>Develops analytical, programming, and visualization skills</li>
+                    <li>Applicable in AI, ML, and business analytics</li>
+                    <li>Boosts career opportunities and salary potential</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic programming and statistics knowledge</li>
+                    <li>Familiarity with Python/R recommended</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and practical coding exercises</li>
+                    <li>Duration: 2-3 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Data Scientist, Machine Learning Engineer, Analyst</li>
+                    <li>Average salary: $70,000 - $140,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Online courses (Coursera, edX)</li>
+                    <li>Books and practice datasets</li>
+                    <li>Hands-on projects and Kaggle competitions</li>
+                </ul>
+            `
+        }
+    },
+
+    tableau: {
+        title: 'Tableau Certification Details',
+        name: 'Tableau',
+        description: 'Data visualization and business intelligence certification.',
+        duration: '1-3 months',
+        cost: '$100-$250',
+        validity: '2 years',
+        icon: 'fas fa-chart-pie',
+        overview: {
+            content: `
+                <h5>What is Tableau Certification?</h5>
+                <p>Validates your ability to design interactive dashboards, visualizations, and business intelligence reports using Tableau.</p>
+                <h5>Why Choose Tableau?</h5>
+                <ul>
+                    <li>Tableau is a leading BI tool in industry</li>
+                    <li>Enhances data visualization and storytelling skills</li>
+                    <li>High demand for Tableau professionals</li>
+                    <li>Applicable in analytics, marketing, and management roles</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic understanding of data and Excel</li>
+                    <li>Familiarity with BI concepts recommended</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and hands-on practical tasks</li>
+                    <li>Duration: 1-2 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Tableau Developer, BI Analyst</li>
+                    <li>Average salary: $60,000 - $110,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Tableau official training</li>
+                    <li>Online courses and tutorials</li>
+                    <li>Hands-on dashboards and sample projects</li>
+                </ul>
+            `
+        }
+    },
+
+    'power-bi': {
+        title: 'Power BI Certification Details',
+        name: 'Power BI',
+        description: 'Microsoft business intelligence certification for data analysis and visualization.',
+        duration: '1-3 months',
+        cost: '$100-$250',
+        validity: '2 years',
+        icon: 'fas fa-chart-line',
+        overview: {
+            content: `
+                <h5>What is Power BI Certification?</h5>
+                <p>Validates your skills in data modeling, visualization, and creating reports using Microsoft Power BI.</p>
+                <h5>Why Choose Power BI?</h5>
+                <ul>
+                    <li>Microsoft Power BI is widely used in business analytics</li>
+                    <li>Improves reporting and data-driven decision-making skills</li>
+                    <li>High demand for BI professionals in multiple industries</li>
+                    <li>Integrates with Microsoft ecosystem for enterprise solutions</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic Excel and data analysis knowledge</li>
+                    <li>Familiarity with databases recommended</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions and practical tasks</li>
+                    <li>Duration: 1-2 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Power BI Developer, BI Analyst</li>
+                    <li>Average salary: $60,000 - $115,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Microsoft Learn and official documentation</li>
+                    <li>Online courses and tutorials</li>
+                    <li>Hands-on datasets and practice reports</li>
+                </ul>
+            `
+        }
+    },
+
+    sql: {
+        title: 'SQL Certification Details',
+        name: 'SQL',
+        description: 'Database management and querying certification.',
+        duration: '1-3 months',
+        cost: '$100-$250',
+        validity: '2 years',
+        icon: 'fas fa-database',
+        overview: {
+            content: `
+                <h5>What is SQL Certification?</h5>
+                <p>Validates your ability to manage, query, and manipulate databases using SQL.</p>
+                 <h5>Why Choose SQL Certification?</h5>
+                <ul>
+                    <li>SQL is essential for database management and analytics</li>
+                    <li>Applicable across all industries handling data</li>
+                    <li>High demand for database professionals</li>
+                    <li>Improves analytical and data management skills</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic understanding of databases and data concepts</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice questions and practical SQL tasks</li>
+                    <li>Duration: 1-2 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Database Developer, Data Analyst, SQL Developer</li>
+                    <li>Average salary: $60,000 - $110,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Official SQL documentation</li>
+                    <li>Online courses and tutorials</li>
+                    <li>Practice queries and projects</li>
+                </ul>
+            `
+        }
+    },
+
+    snowflake: {
+        title: 'Snowflake Certification Details',
+        name: 'Snowflake',
+        description: 'Cloud data platform certification for analytics and data warehousing.',
+        duration: '2-4 months',
+        cost: '$200-$400',
+        validity: '2 years',
+        icon: 'fas fa-cloud',
+        overview: {
+            content: `
+                <h5>What is Snowflake Certification?</h5>
+                <p>Validates your skills in using Snowflake for cloud data storage, analytics, and management.</p>
+                <h5>Why Choose Snowflake?</h5>
+                <ul>
+                    <li>Snowflake is a leading cloud data platform</li>
+                    <li>Enables scalable and secure data analytics</li>
+                    <li>High demand in cloud-based data management roles</li>
+                    <li>Supports integration with multiple BI tools</li>
+                </ul>
+
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic SQL and database knowledge</li>
+                    <li>Familiarity with cloud concepts recommended</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and practical lab exercises</li>
+                    <li>Duration: 2 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Snowflake Developer, Data Engineer</li>
+                    <li>Average salary: $80,000 - $130,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Snowflake official documentation</li>
+                    <li>Practice labs and tutorials</li>
+                    <li>Online courses and certifications</li>
+                </ul>
+            `
+        }
+    },
+
+    spark: {
+        title: 'Apache Spark Certification Details',
+        name: 'Apache Spark',
+        description: 'Big data processing and analytics certification.',
+        duration: '2-4 months',
+        cost: '$200-$400',
+        validity: '2 years',
+        icon: 'fas fa-chart-area',
+        overview: {
+            content: `
+                <h5>What is Apache Spark Certification?</h5>
+                <p>Validates your skills in big data processing, analytics, and distributed computing using Apache Spark.</p>
+                <h5>Why Choose Apache Spark?</h5>
+                <ul>
+                    <li>Apache Spark is widely used in big data processing</li>
+                    <li>Enables fast analytics on large datasets</li>
+                    <li>High demand for Spark developers and data engineers</li>
+                    <li>Supports integration with multiple data sources and analytics tools</li>
+                </ul>
+            `
+        },
+        prerequisites: {
+            content: `
+                <h5>Requirements</h5>
+                <ul>
+                    <li>Basic knowledge of programming and databases</li>
+                    <li>Familiarity with distributed computing concepts recommended</li>
+                </ul>
+            `
+        },
+        examDetails: {
+            content: `
+                <h5>Exam Format</h5>
+                <ul>
+                    <li>Multiple choice and practical exercises</li>
+                    <li>Duration: 2-3 hours</li>
+                </ul>
+            `
+        },
+        careerBenefits: {
+            content: `
+                <h5>Career Impact</h5>
+                <ul>
+                    <li>Roles: Data Engineer, Big Data Developer</li>
+                    <li>Average salary: $80,000 - $140,000</li>
+                </ul>
+            `
+        },
+        studyResources: {
+            content: `
+                <h5>Resources</h5>
+                <ul>
+                    <li>Apache Spark official documentation</li>
+                    <li>Online courses and labs</li>
+                    <li>Hands-on big data projects</li>
+                </ul>
+            `
+        }
+    }
+    };
     return certifications[certType];
 }
+
+
 
 function loadTabContent(certData) {
     // Load overview content
