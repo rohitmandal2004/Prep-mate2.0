@@ -56,6 +56,33 @@ body {
     font-size: 1.8rem;
 }
 
+/* Logo video styling (used instead of an image) */
+ .nav-logo .logo-video {
+    /* slightly wider than tall for a horizontal logo (increased size) */
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    pointer-events: none; /* prevent accidental interaction */
+}
+
+@media (max-width: 768px) {
+    .nav-logo .logo-video {
+        width: 96px;
+        height: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo .logo-video {
+        width: 80px;
+        height: 52px;
+    }
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -2053,6 +2080,8 @@ html {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 

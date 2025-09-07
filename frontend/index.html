@@ -13,7 +13,10 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="./logo.png" alt="Prepmate Logo" class="logo-image">
+                <!-- fallback image is kept for non-video/broken autoplay support -->
+                <video src="./Prep Mate (3).mp4" autoplay loop muted playsinline class="logo-video" role="img" aria-label="Prepmate logo video">
+                    <img src="./Prep Mate.png" alt="Prepmate Logo" class="logo-image">
+                </video>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
