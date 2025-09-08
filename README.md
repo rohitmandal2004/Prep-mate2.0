@@ -1,5 +1,7 @@
 # 🚀 Prepmate - Job Portal & Skills Management Platform
 
+> NOTE: This repository now uses a single consolidated README (this file). The `backend/README.md` and `frontend/README.md` were removed to avoid duplication — all relevant backend and frontend setup instructions are included below.
+
 A comprehensive MERN stack application that combines job searching, skills management, and exam preparation in one platform.
 
 ## ✨ Features
