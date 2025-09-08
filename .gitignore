@@ -1,0 +1,61 @@
+# Unnecessary files/folders
+# Node dependencies (do not commit large installed packages)
+# Specifically ignore backend's node_modules created by `npm install`
+backend/node_modules/
+
+# Environment files (ignore secrets). Keep example templates.
+.env
+.env.*
+env.*
+!backend/env.example
+
+# Build / cache (auto-generated)
+dist/
+build/
+.next/
+.cache/
+public/build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Runtime / process files
+pids/
+*.pid
+*.seed
+
+dist/
+build/
+# Coverage
+coverage/
+
+# Uploaded files
+uploads/
+backend/uploads/
+
+# OS files (auto-created by operating systems)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+
+# Other temporary files
+*.log
+*.tmp
+*.temp
+
+# Windows shortcuts
+*.lnk
+
+# Project-specific large media files
+# Ignore the provided frontend video which is large and shouldn't be committed
