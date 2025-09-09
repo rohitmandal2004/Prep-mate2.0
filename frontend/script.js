@@ -8,6 +8,9 @@ hamburger.addEventListener('click', () => {
 });
 // Wait until DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Check authentication status first
+    checkAuthStatus();
+    
     // Reference buttons by id
     const browseJobsBtn = document.getElementById('browse-jobs-btn');
     const learnMoreBtn = document.getElementById('learn-more-btn');
@@ -23,6 +26,24 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '#contact'; // put the path to your learn more page
     });
 });
+
+// Check authentication status and update UI
+function checkAuthStatus() {
+    const token = sessionStorage.getItem('authToken');
+    const userData = sessionStorage.getItem('userData');
+    
+    if (token && userData) {
+        try {
+            const user = JSON.parse(userData);
+            updateAuthUI(true, user);
+        } catch (error) {
+            console.error('Error parsing user data:', error);
+            updateAuthUI(false);
+        }
+    } else {
+        updateAuthUI(false);
+    }
+}
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -815,18 +836,25 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 });
 
 // Update authentication UI
-function updateAuthUI(isLoggedIn) {
+function updateAuthUI(isLoggedIn, user = null) {
     const authButtons = document.querySelector('.auth-buttons');
     
-    if (isLoggedIn) {
+    if (isLoggedIn && user) {
+        // Create display name - use firstName only if lastName is empty, otherwise use both
+        const displayName = user.lastName ? `${user.firstName} ${user.lastName}` : user.firstName;
+        
         authButtons.innerHTML = `
             <div class="user-menu">
                 <button class="btn btn-outline btn-sm" onclick="showUserMenu()">
                     <i class="fas fa-user"></i>
-                    <span>rohit04</span>
+                    <span>${displayName}</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="user-dropdown" id="userDropdown">
+                    <div class="user-info">
+                        <div class="user-name">${displayName}</div>
+                        <div class="user-email">${user.email}</div>
+                    </div>
                     <a href="#"><i class="fas fa-user-circle"></i> Profile</a>
                     <a href="#"><i class="fas fa-bookmark"></i> Saved Jobs</a>
                     <a href="#"><i class="fas fa-cog"></i> Settings</a>
@@ -849,8 +877,20 @@ function showUserMenu() {
 }
 
 function logout() {
+    // Clear session storage
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('userData');
+    
+    // Update UI
     updateAuthUI(false);
+    
+    // Show notification
     showNotification('Successfully logged out', 'success');
+    
+    // Redirect to home page after a short delay
+    setTimeout(() => {
+        window.location.href = 'home.html';
+    }, 1500);
 }
 
 // Social authentication handlers
@@ -886,6 +926,16 @@ document.addEventListener('keydown', function(e) {
         document.querySelectorAll('.auth-modal.active').forEach(modal => {
             closeAuthModal(modal.id);
         });
+    }
+});
+
+// Close user dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    const userMenu = document.querySelector('.user-menu');
+    const userDropdown = document.getElementById('userDropdown');
+    
+    if (userMenu && userDropdown && !userMenu.contains(e.target)) {
+        userDropdown.classList.remove('active');
     }
 });
 
