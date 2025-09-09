@@ -2953,3 +2953,34 @@ html {
         margin-bottom: 0.5rem;
     }
 } 
+
+/* Chat widget overrides: ensure visibility above auth modals */
+.chat-widget,
+.chatbox,
+.chat-bot,
+.chatbot,
+.botpress-webchat,
+.tawk-min-container,
+.tidio-chat,
+.intercom-lightweight-app,
+iframe[src*="botpress"],
+iframe[src*="tawk"],
+iframe[src*="tidio"],
+iframe[src*="intercom"],
+iframe.chat-widget,
+div[id*="tidio"],
+div[id*="tawk"],
+div[id*="intercom"] {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    z-index: 2147483000 !important; /* above .auth-modal (10000) */
+}
+
+/* If chat opens a full panel/window, keep it above modals */
+.chat-widget *,
+.botpress-webchat *,
+.tidio-chat *,
+.intercom-lightweight-app * {
+    z-index: inherit !important;
+}

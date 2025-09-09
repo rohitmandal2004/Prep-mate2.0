@@ -4,16 +4,29 @@
 let currentModal = null;
 let isAuthenticating = false;
 
-// Track registered emails (in a real app, this would be stored in a database)
-let registeredEmails = JSON.parse(localStorage.getItem('registeredEmails') || '[]');
+// Backend API base URL (adjust if deployed)
+const API_BASE_URL = (function() {
+    // 1) If meta[name="api-base"] is set, prefer it (for production deployment)
+    const meta = document.querySelector('meta[name="api-base"]');
+    const metaUrl = meta && meta.getAttribute('content') ? meta.getAttribute('content').trim() : '';
+    if (metaUrl) return metaUrl.replace(/\/$/, '');
 
-// Track user data (in a real app, this would be stored in a database)
-let userDatabase = JSON.parse(localStorage.getItem('userDatabase') || '{}');
+    // 2) Local dev, file://, and LAN IPs → default to current host:5000
+    const isFile = location.protocol === 'file:';
+    const host = location.hostname || 'localhost';
+    const isLocalLike = host === 'localhost' || host === '127.0.0.1' || /^(::1)$/.test(host) || isFile;
+    const isPrivateIp = /^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(host);
+    if (isLocalLike || isPrivateIp) return `http://${host}:5000`;
+
+    // 3) Same-origin in production if backend is reverse-proxied under the same domain
+    return '';
+})();
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     checkExistingAuth();
+    enhanceCustomCheckboxes();
 });
 
 // Initialize all event listeners
@@ -57,10 +70,40 @@ function initializeEventListeners() {
     });
 }
 
+// Make custom checkboxes fully clickable and keyboard accessible
+function enhanceCustomCheckboxes() {
+    const labels = document.querySelectorAll('.checkbox-label');
+    labels.forEach(label => {
+        // Make label focusable for keyboard users
+        if (!label.hasAttribute('tabindex')) label.setAttribute('tabindex', '0');
+
+        const input = label.querySelector('input[type="checkbox"]');
+        if (!input) return;
+
+        // Toggle when clicking anywhere on the label except links
+        label.addEventListener('click', function(e) {
+            if (e.target.closest('a')) return; // let links work normally
+            if (e.target === input) return; // native click
+            input.checked = !input.checked;
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+
+        // Space/Enter toggles checkbox when label is focused
+        label.addEventListener('keydown', function(e) {
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                input.checked = !input.checked;
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+    });
+}
+
 // Check if user is already authenticated
 function checkExistingAuth() {
-    const token = sessionStorage.getItem('authToken');
-    const userData = sessionStorage.getItem('userData');
+    // Support persistent login across sessions/devices via localStorage
+    const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+    const userData = localStorage.getItem('userData') || sessionStorage.getItem('userData');
     
     if (token && userData) {
         // User is already logged in, redirect to main app
@@ -175,20 +218,18 @@ async function handleLogin(e) {
         isAuthenticating = true;
         showLoadingOverlay(true);
         
-        // Simulate API call (replace with actual API endpoint)
-        const response = await simulateLoginAPI(email, password);
+        // Real API call
+        const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
         
-        if (response.success) {
-            // Store authentication data
-            const authData = {
-                token: response.token,
-                user: response.user,
-                timestamp: Date.now()
-            };
-            
-            // Always use sessionStorage for auto-logout on refresh
-            sessionStorage.setItem('authToken', response.token);
-            sessionStorage.setItem('userData', JSON.stringify(response.user));
+        if (res.ok && data.token && data.user) {
+            const storage = rememberMe ? localStorage : sessionStorage;
+            storage.setItem('authToken', data.token);
+            storage.setItem('userData', JSON.stringify(data.user));
             
             // Close modal first
             closeAuthModal('loginModal');
@@ -202,7 +243,7 @@ async function handleLogin(e) {
             }, 1500);
             
         } else {
-            showNotification(response.message || 'Login failed. Please try again.', 'error');
+            showNotification(data.message || 'Login failed. Please try again.', 'error');
         }
         
     } catch (error) {
@@ -258,26 +299,18 @@ async function handleSignup(e) {
         isAuthenticating = true;
         showLoadingOverlay(true);
         
-        // Simulate API call (replace with actual API endpoint)
-        const response = await simulateSignupAPI({
-            firstName,
-            lastName,
-            email,
-            password,
-            newsletterSignup
+        // Real API call
+        const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ firstName, lastName, email, password, phone: undefined })
         });
+        const data = await res.json().catch(() => ({ message: 'Unexpected response from server' }));
         
-        if (response.success) {
-            // Store authentication data
-            const authData = {
-                token: response.token,
-                user: response.user,
-                timestamp: Date.now()
-            };
-            
-            // Always use sessionStorage for auto-logout on refresh
-            sessionStorage.setItem('authToken', response.token);
-            sessionStorage.setItem('userData', JSON.stringify(response.user));
+        if (res.ok && data.token && data.user) {
+            // Persist signup session; use localStorage by default after signup
+            localStorage.setItem('authToken', data.token);
+            localStorage.setItem('userData', JSON.stringify(data.user));
             
             // Close modal first
             closeAuthModal('signupModal');
@@ -291,12 +324,33 @@ async function handleSignup(e) {
             }, 1500);
             
         } else {
-            showNotification(response.message || 'Signup failed. Please try again.', 'error');
+            // Handle duplicate email case from backend validation
+            const duplicateEmail = (data.message && data.message.toLowerCase().includes('exists')) ||
+                (Array.isArray(data.errors) && data.errors.some(err => String(err.msg || err.message || '').toLowerCase().includes('exists')));
+
+            // Show first validation error if present
+            if (Array.isArray(data.errors) && data.errors.length > 0) {
+                const firstError = data.errors[0];
+                showNotification(firstError.msg || firstError.message || data.message || 'Signup failed. Please check your inputs.', 'error');
+            } else if (data.message) {
+                showNotification(data.message, 'error');
+            } else {
+                showNotification('Signup failed. Please try again.', 'error');
+            }
+
+            // If email already exists, switch to login and prefill
+            if (duplicateEmail) {
+                setTimeout(() => {
+                    switchToLogin();
+                    const loginEmail = document.getElementById('loginEmail');
+                    if (loginEmail) loginEmail.value = email;
+                }, 600);
+            }
         }
         
     } catch (error) {
         console.error('Signup error:', error);
-        showNotification('An error occurred. Please try again.', 'error');
+        showNotification('Unable to reach the server. Ensure the backend is running on http://localhost:5000', 'error');
     } finally {
         isAuthenticating = false;
         showLoadingOverlay(false);
@@ -410,81 +464,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Simulate API calls (replace with actual API integration)
-async function simulateLoginAPI(email, password) {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Check if email is registered
-    if (!registeredEmails.includes(email)) {
-        return {
-            success: false,
-            message: 'Email not registered. Please sign up first.'
-        };
-    }
-    
-    // Simulate successful login for registered emails
-    if (email && password) {
-        // Get stored user data
-        const storedUser = userDatabase[email];
-        
-        return {
-            success: true,
-            token: 'demo_token_' + Date.now(),
-            user: {
-                id: Date.now(),
-                firstName: storedUser ? storedUser.firstName : email.split('@')[0],
-                lastName: storedUser ? storedUser.lastName : '',
-                email: email,
-                avatar: null
-            }
-        };
-    } else {
-        return {
-            success: false,
-            message: 'Please enter both email and password'
-        };
-    }
-}
-
-async function simulateSignupAPI(userData) {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Check if email is already registered
-    if (registeredEmails.includes(userData.email)) {
-        return {
-            success: false,
-            message: 'Email already registered. Please use a different email or try logging in.'
-        };
-    }
-    
-    // Register the email
-    registeredEmails.push(userData.email);
-    localStorage.setItem('registeredEmails', JSON.stringify(registeredEmails));
-    
-    // Store user data
-    userDatabase[userData.email] = {
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        email: userData.email
-    };
-    localStorage.setItem('userDatabase', JSON.stringify(userDatabase));
-    
-    // Simulate successful signup for demo purposes
-    // In real implementation, this would be an actual API call
-    return {
-        success: true,
-        token: 'demo_token_' + Date.now(),
-        user: {
-            id: Date.now(),
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: userData.email,
-            avatar: null
-        }
-    };
-}
+// Removed simulated auth; using real backend API
 
 // Social authentication handlers (placeholder)
 function handleGoogleAuth() {

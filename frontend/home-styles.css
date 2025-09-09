@@ -496,27 +496,30 @@ body {
 
 .checkbox-label {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.75rem;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.5;
+    position: relative;
 }
 
 .checkbox-label input[type="checkbox"] {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .checkmark {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border: 2px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 6px;
     position: relative;
     transition: var(--transition);
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
 .checkbox-label:hover .checkmark {
@@ -535,8 +538,38 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.15rem;
     font-weight: bold;
+}
+
+/* Keyboard focus state */
+.checkbox-label:focus-within .checkmark {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-color);
+}
+
+/* Improve spacing of long label text with custom checkbox */
+.checkbox-label .checkmark + span,
+.checkbox-label .checkmark + a {
+    line-height: 1.5;
+}
+
+/* Ensure size inside auth modals with higher specificity */
+.auth-modal .checkbox-label .checkmark {
+    width: 28px !important;
+    height: 28px !important;
+    border-width: 2px !important;
+    background: #ffffff !important;
+    border-color: #9ca3af !important;
+}
+
+/* Hide native checkbox reliably */
+.auth-modal .checkbox-label input[type="checkbox"] {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .forgot-password {
@@ -870,4 +903,35 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
+}
+
+/* Chat widget overrides: ensure visibility above auth modals */
+.chat-widget,
+.chatbox,
+.chat-bot,
+.chatbot,
+.botpress-webchat,
+.tawk-min-container,
+.tidio-chat,
+.intercom-lightweight-app,
+iframe[src*="botpress"],
+iframe[src*="tawk"],
+iframe[src*="tidio"],
+iframe[src*="intercom"],
+iframe.chat-widget,
+div[id*="tidio"],
+div[id*="tawk"],
+div[id*="intercom"] {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    z-index: 2147483000 !important; /* above .auth-modal (10000) */
+}
+
+/* If chat opens a full panel/window, keep it above modals */
+.chat-widget *,
+.botpress-webchat *,
+.tidio-chat *,
+.intercom-lightweight-app * {
+    z-index: inherit !important;
 }

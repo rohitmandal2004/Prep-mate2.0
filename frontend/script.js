@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Check authentication status and update UI
 function checkAuthStatus() {
-    const token = sessionStorage.getItem('authToken');
-    const userData = sessionStorage.getItem('userData');
+    // Prefer persistent login (localStorage), fall back to sessionStorage
+    const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+    const userData = localStorage.getItem('userData') || sessionStorage.getItem('userData');
     
     if (token && userData) {
         try {
@@ -840,8 +841,11 @@ function updateAuthUI(isLoggedIn, user = null) {
     const authButtons = document.querySelector('.auth-buttons');
     
     if (isLoggedIn && user) {
-        // Create display name - use firstName only if lastName is empty, otherwise use both
-        const displayName = user.lastName ? `${user.firstName} ${user.lastName}` : user.firstName;
+        // Prefer full name; otherwise derive a unique username from email
+        const usernameFromEmail = user && user.email ? String(user.email).split('@')[0] : 'User';
+        const displayName = (user.firstName && user.lastName)
+            ? `${user.firstName} ${user.lastName}`
+            : (user.firstName || usernameFromEmail);
         
         authButtons.innerHTML = `
             <div class="user-menu">
@@ -877,9 +881,11 @@ function showUserMenu() {
 }
 
 function logout() {
-    // Clear session storage
+    // Clear both storages
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userData');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
     
     // Update UI
     updateAuthUI(false);
