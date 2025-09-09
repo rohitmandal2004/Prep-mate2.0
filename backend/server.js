@@ -29,11 +29,8 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// CORS configuration
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
-}));
+// CORS configuration (relaxed for development to allow static file origins and other devices)
+app.use(cors());
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
