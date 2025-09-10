@@ -1,6 +1,6 @@
 // Home Page JavaScript for Authentication and Navigation
 
-// Global variables
+//Global variables
 let currentModal = null;
 let isAuthenticating = false;
 
@@ -219,7 +219,7 @@ async function handleLogin(e) {
         showLoadingOverlay(true);
         
         // Real API call
-        const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        const res = await fetch(`https://prep-mate2-0-lfnt.onrender.com/api/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -285,6 +285,17 @@ async function handleSignup(e) {
         return;
     }
     
+    // Check password strength requirements
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[@$!%*?&]/.test(password);
+    
+    if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
+        showNotification('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&)', 'error');
+        return;
+    }
+    
     if (password !== confirmPassword) {
         showNotification('Passwords do not match', 'error');
         return;
@@ -300,7 +311,7 @@ async function handleSignup(e) {
         showLoadingOverlay(true);
         
         // Real API call
-        const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
+        const res = await fetch(`https://prep-mate2-0-lfnt.onrender.com/api/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ firstName, lastName, email, password, phone: undefined })
@@ -350,7 +361,7 @@ async function handleSignup(e) {
         
     } catch (error) {
         console.error('Signup error:', error);
-        showNotification('Unable to reach the server. Ensure the backend is running on http://localhost:5000', 'error');
+        showNotification('Unable to reach the server. Please check your internet connection and try again.', 'error');
     } finally {
         isAuthenticating = false;
         showLoadingOverlay(false);

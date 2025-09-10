@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://prep-mate2-0-lfnt.onrender.com';
 
 // Test the health endpoint
 async function testHealthEndpoint() {
