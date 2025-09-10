@@ -8,12 +8,6 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 
-app.use(cors({
-  origin: "*", // or your frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -38,6 +32,16 @@ app.use('/api/', limiter);
 
 // CORS configuration (relaxed for development to allow static file origins and other devices)
 app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5500",             // local dev
+    "http://127.0.0.1:5500",
+    "https://prep-mate2-0.vercel.app",   // Vercel frontend
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
