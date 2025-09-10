@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
-const cors = require("cors");
+
 app.use(cors({
   origin: "*", // or your frontend domain
   methods: ["GET", "POST", "PUT", "DELETE"],
