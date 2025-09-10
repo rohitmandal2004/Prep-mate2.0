@@ -12,11 +12,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Import routes
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
-const jobRoutes = require('./routes/jobs');
-const skillRoutes = require('./routes/skills');
-const examRoutes = require('./routes/exams');
+const authRoutes = require('./backend/routes/auth');
+const userRoutes = require('./backend/routes/users');
+const jobRoutes = require('./backend/routes/jobs');
+const skillRoutes = require('./backend/routes/skills');
+const examRoutes = require('./backend/routes/exams');
 
 // Security middleware
 app.use(helmet());
@@ -67,6 +67,13 @@ app.get('/api/health', (req, res) => {
     message: 'Prepmate API is running',
     timestamp: new Date().toISOString()
   });
+});
+
+const path = require("path");
+app.use(express.static(path.join(__dirname, "frontend"))); 
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "home.html"));
 });
 
 // Error handling middleware
